@@ -53,7 +53,8 @@ jobs:
             }' > zec_scalping.json
 
           jq empty zec_scalping.json
-         - name: Telegram scalp alert
+
+      - name: Telegram scalp alert
         shell: bash
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
@@ -72,7 +73,6 @@ jobs:
              || [[ "$SETUP_MISSED" == "true" ]] \
              || [[ "$DUPLICATE" == "true" ]] \
              || [[ "$DATA_QUALITY" != "OK" ]]; then
-
             echo "Nessun nuovo setup scalp notificabile."
             exit 0
           fi
@@ -96,16 +96,23 @@ jobs:
           DURATION="$(jq -r '.scalping.expected_duration_minutes' zec_scalping.json)"
 
           POSITION="$(awk -v risk=10 -v stop="$STOP_PCT" 'BEGIN {
-            if (stop > 0) printf "%.2f", risk/(stop/100);
-            else print "N/A";
+            if (stop > 0) {
+              printf "%.2f", risk / (stop / 100)
+            } else {
+              print "N/A"
+            }
           }')"
 
           MARGIN="$(awk -v position="$POSITION" 'BEGIN {
-            if (position != "N/A") printf "%.2f", position/8;
-            else print "N/A";
+            if (position != "N/A") {
+              printf "%.2f", position / 8
+            } else {
+              print "N/A"
+            }
           }')"
 
-          MESSAGE="🚨 ZEC SCALPING SIGNAL
+          MESSAGE=$(cat <<EOF
+          🚨 ZEC SCALPING SIGNAL
 
           📊 Decisione: ${DECISION}
           🎯 Entry: ${ENTRY_LOW} - ${ENTRY_HIGH}
@@ -129,16 +136,21 @@ jobs:
 
           🆔 ${SETUP_ID}
 
-          ⚠️ Segnale informativo. Ingresso manuale."
+          ⚠️ Segnale informativo. Ingresso manuale.
+          EOF
+          )
 
           curl --fail --silent --show-error \
             -X POST \
             "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
             --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
             --data-urlencode "text=${MESSAGE}"
+
       - name: Commit updated mirror
         shell: bash
         run: |
+          set -euo pipefail
+
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
