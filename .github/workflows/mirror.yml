@@ -53,7 +53,20 @@ jobs:
             }' > zec_scalping.json
 
           jq empty zec_scalping.json
+      - name: Telegram test notification
+        if: github.event_name == 'workflow_dispatch'
+        shell: bash
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          set -euo pipefail
 
+          curl --fail --silent --show-error \
+            -X POST \
+            "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+            --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
+            --data-urlencode "text=✅ ZEC Scalping Alert: collegamento GitHub → Telegram funzionante."
       - name: Commit updated mirror
         shell: bash
         run: |
