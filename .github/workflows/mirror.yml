@@ -53,8 +53,7 @@ jobs:
             }' > zec_scalping.json
 
           jq empty zec_scalping.json
-      - name: Telegram test notification
-        if: github.event_name == 'workflow_dispatch'
+         - name: Telegram scalp alert
         shell: bash
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
@@ -62,11 +61,81 @@ jobs:
         run: |
           set -euo pipefail
 
+          DECISION="$(jq -r '.scalping.decision // "NO_TRADE"' zec_scalping.json)"
+          HARD_VETO="$(jq -r '.scalping.hard_veto // true' zec_scalping.json)"
+          SETUP_MISSED="$(jq -r '.scalping.setup_missed // true' zec_scalping.json)"
+          DUPLICATE="$(jq -r '.scalping.duplicate_suppressed // true' zec_scalping.json)"
+          DATA_QUALITY="$(jq -r '.scalping.data_quality // "UNKNOWN"' zec_scalping.json)"
+
+          if [[ "$DECISION" == "NO_TRADE" ]] \
+             || [[ "$HARD_VETO" == "true" ]] \
+             || [[ "$SETUP_MISSED" == "true" ]] \
+             || [[ "$DUPLICATE" == "true" ]] \
+             || [[ "$DATA_QUALITY" != "OK" ]]; then
+
+            echo "Nessun nuovo setup scalp notificabile."
+            exit 0
+          fi
+
+          ENTRY_LOW="$(jq -r '.scalping.entry_zone.low' zec_scalping.json)"
+          ENTRY_HIGH="$(jq -r '.scalping.entry_zone.high' zec_scalping.json)"
+          STOP="$(jq -r '.scalping.stop' zec_scalping.json)"
+          STOP_PCT="$(jq -r '.scalping.stop_distance_pct' zec_scalping.json)"
+
+          TP1="$(jq -r '.scalping.tp1' zec_scalping.json)"
+          TP2="$(jq -r '.scalping.tp2' zec_scalping.json)"
+          TP3="$(jq -r '.scalping.tp3' zec_scalping.json)"
+
+          RR1="$(jq -r '.scalping.rr_tp1' zec_scalping.json)"
+          RR2="$(jq -r '.scalping.rr_tp2' zec_scalping.json)"
+          RR3="$(jq -r '.scalping.rr_tp3' zec_scalping.json)"
+
+          CONFIDENCE="$(jq -r '.scalping.confidence_score' zec_scalping.json)"
+          REGIME="$(jq -r '.scalping.regime' zec_scalping.json)"
+          SETUP_ID="$(jq -r '.scalping.setup_id' zec_scalping.json)"
+          DURATION="$(jq -r '.scalping.expected_duration_minutes' zec_scalping.json)"
+
+          POSITION="$(awk -v risk=10 -v stop="$STOP_PCT" 'BEGIN {
+            if (stop > 0) printf "%.2f", risk/(stop/100);
+            else print "N/A";
+          }')"
+
+          MARGIN="$(awk -v position="$POSITION" 'BEGIN {
+            if (position != "N/A") printf "%.2f", position/8;
+            else print "N/A";
+          }')"
+
+          MESSAGE="🚨 ZEC SCALPING SIGNAL
+
+          📊 Decisione: ${DECISION}
+          🎯 Entry: ${ENTRY_LOW} - ${ENTRY_HIGH}
+
+          🛑 Stop: ${STOP}
+          📏 Stop distance: ${STOP_PCT}%
+
+          ✅ TP1: ${TP1} | RR ${RR1}
+          ✅ TP2: ${TP2} | RR ${RR2}
+          ✅ TP3: ${TP3} | RR ${RR3}
+
+          💰 Capitale: 1000 €
+          ⚠️ Rischio max: ~10 €
+          ⚙️ Leva: 8x
+          📦 Nozionale indicativo: ${POSITION} USDT
+          💳 Margine indicativo: ${MARGIN} USDT
+
+          📈 Confidence: ${CONFIDENCE}
+          🌡 Regime: ${REGIME}
+          ⏱ Durata prevista: ${DURATION} min
+
+          🆔 ${SETUP_ID}
+
+          ⚠️ Segnale informativo. Ingresso manuale."
+
           curl --fail --silent --show-error \
             -X POST \
             "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
             --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
-            --data-urlencode "text=✅ ZEC Scalping Alert: collegamento GitHub → Telegram funzionante."
+            --data-urlencode "text=${MESSAGE}"
       - name: Commit updated mirror
         shell: bash
         run: |
