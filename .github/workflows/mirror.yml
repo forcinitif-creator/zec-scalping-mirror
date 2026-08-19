@@ -1,0 +1,71 @@
+name: ZEC Cloud Mirror
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "*/5 * * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: zec-cloud-mirror
+  cancel-in-progress: true
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download ZEC cloud data
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          BASE="https://zec-scalping-bridge.forciniti.workers.dev"
+
+          curl --fail --silent --show-error \
+            --retry 3 --retry-delay 5 \
+            "$BASE/health" > health.json
+
+          curl --fail --silent --show-error \
+            --retry 3 --retry-delay 5 \
+            "$BASE/latest" > latest.json
+
+          curl --fail --silent --show-error \
+            --retry 3 --retry-delay 5 \
+            "$BASE/scalping" > scalping.json
+
+          jq -n \
+            --arg mirrored_at "$(date -u +"%Y-%m-%dT%H:%M:%SZ")" \
+            --slurpfile health health.json \
+            --slurpfile latest latest.json \
+            --slurpfile scalping scalping.json \
+            '{
+              mirrored_at_utc: $mirrored_at,
+              source: "zec-scalping-bridge.forciniti.workers.dev",
+              health: $health[0],
+              latest: $latest[0],
+              scalping: $scalping[0]
+            }' > zec_scalping.json
+
+          jq empty zec_scalping.json
+
+      - name: Commit updated mirror
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add zec_scalping.json
+
+          if git diff --cached --quiet; then
+            echo "Nessuna modifica da pubblicare."
+            exit 0
+          fi
+
+          git commit -m "Update ZEC scalping mirror"
+          git push
