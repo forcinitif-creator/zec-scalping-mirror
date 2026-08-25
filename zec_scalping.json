@@ -1,5 +1,5 @@
 {
-  "mirrored_at_utc": "2026-08-25T11:35:53.000Z",
+  "mirrored_at_utc": "2026-08-25T11:40:53.000Z",
   "source": "zec-scalping-bridge.forciniti.workers.dev",
   "health": {
     "status": "ok",
@@ -7,7 +7,7 @@
     "category": "linear",
     "read_only": true,
     "runtime": "cloudflare_workers",
-    "strategy_version": "ZEC_SCALP_FINAL_EXECUTION_GRADE_A_PLUS_REGIME_AWARE_SWEEP_2026-08-24",
+    "strategy_version": "ZEC_SCALP_FINAL_EXECUTION_GRADE_A_PLUS_REGIME_AWARE_SWEEP_HYBRID_BYBIT_2026-08-25",
     "execution_grade": {
       "enabled": true,
       "closed_timeframes_for_structure": true,
@@ -26,8 +26,11 @@
         "reversal": 3
       },
       "max_chase_r_during_arming": 0.2,
-      "sampled_fast_order_flow": false,
-      "order_flow_source": "D1_PERSISTENT_EXACT"
+      "sampled_fast_order_flow": true,
+      "order_flow_source": "D1_PERSISTENT_EXACT_WITH_SAMPLED_FAST_FALLBACK",
+      "bybit_primary_endpoint": "https://api.bybit.com",
+      "bybit_fallback_endpoint": "https://api.bytick.com",
+      "vwap_freshness_guard": true
     },
     "cron": {
       "configured": true,
@@ -36,7 +39,7 @@
         "*/5 * * * *",
         "*/2 * * * *"
       ],
-      "last_collect_at": "2026-08-25T11:35:53.000Z",
+      "last_collect_at": "2026-08-25T11:39:53.000Z",
       "last_collect_status": "ok"
     },
     "database": {
@@ -48,7 +51,7 @@
   "latest": {
     "symbol": "ZECUSDT",
     "category": "linear",
-    "timestamp_utc": "2026-08-25T11:35:53.000Z",
+    "timestamp_utc": "2026-08-25T11:40:53.000Z",
     "market": {
       "last_price": null,
       "bid": null,
@@ -61,11 +64,11 @@
       "volume_24h": null,
       "turnover_24h": null,
       "status": "unavailable",
-      "updated_at_utc": "2026-08-25T11:35:53.000Z"
+      "updated_at_utc": "2026-08-25T11:40:53.000Z"
     },
     "vwap": {
       "session": {
-        "value": 849.6086922461141,
+        "value": null,
         "status": "stale",
         "bars_used": 612,
         "backfill_complete": true,
@@ -75,7 +78,7 @@
         "cursor_utc": "2026-08-25T10:12:00.000Z"
       },
       "weekly": {
-        "value": 839.6178068790535,
+        "value": null,
         "status": "stale",
         "bars_used": 2051,
         "backfill_complete": true,
@@ -84,7 +87,7 @@
         "updated_at_utc": "2026-08-25T10:12:25.000Z",
         "cursor_utc": "2026-08-25T10:12:00.000Z"
       },
-      "status": "ok",
+      "status": "stale",
       "source": "Bybit 1m klines, HLC3*base_volume",
       "last_vs_session_pct": null,
       "last_vs_weekly_pct": null,
@@ -96,7 +99,7 @@
       "weekly_anchor_utc": "2026-08-24T00:00:00.000Z"
     },
     "bars_used": {
-      "cloud_1m": 277,
+      "cloud_1m": 272,
       "session_1m": 612,
       "weekly_1m": 2051
     },
@@ -105,29 +108,29 @@
         "value": 0,
         "status": "stale",
         "updated_at": "2026-08-25T10:12:00.000Z",
-        "age_seconds": 5033
+        "age_seconds": 5333
       },
       "taker_sell_volume": {
         "value": 0,
         "status": "stale",
         "updated_at": "2026-08-25T10:12:00.000Z",
-        "age_seconds": 5033
+        "age_seconds": 5333
       },
       "taker_volume_delta": {
         "value": 0,
         "status": "stale",
         "updated_at": "2026-08-25T10:12:00.000Z",
-        "age_seconds": 5033
+        "age_seconds": 5333
       },
       "taker_delta_ratio": {
         "value": null,
         "status": "unavailable",
         "updated_at": "2026-08-25T10:12:00.000Z",
-        "age_seconds": 5033
+        "age_seconds": 5333
       },
       "trade_count": 0,
       "trade_collection_status": "unavailable",
-      "trade_collection_updated_at_utc": "2026-08-25T11:35:53.000Z",
+      "trade_collection_updated_at_utc": "2026-08-25T11:40:53.000Z",
       "windows": {
         "1m": {
           "taker_buy_volume": 0,
@@ -154,39 +157,54 @@
           "status": "unavailable"
         }
       },
+      "sampled_fast": {
+        "status": "UNAVAILABLE",
+        "mode": "SAMPLED_FAST",
+        "quality": "LOW",
+        "state": "UNKNOWN",
+        "taker_delta_ratio": null,
+        "trade_count": 0,
+        "sample_span_seconds": 0,
+        "newest_age_seconds": null,
+        "aligned_chunks": 0,
+        "chunk_directions": [],
+        "has_opposite_chunk": false,
+        "updated_at_ms": 1787658053000,
+        "age_seconds": 0
+      },
       "realized_volatility_bps": {
         "value": 135.59726983353957,
         "status": "stale",
         "updated_at": "2026-08-25T10:12:00.000Z",
-        "age_seconds": 5033
+        "age_seconds": 5333
       }
     },
     "orderbook": {
       "status": "unavailable",
-      "updated_at": "2026-08-25T11:35:53.000Z",
+      "updated_at": "2026-08-25T11:40:53.000Z",
       "age_seconds": 0,
       "best_bid": {
         "value": null,
         "status": "unavailable",
-        "updated_at": "2026-08-25T11:35:53.000Z",
+        "updated_at": "2026-08-25T11:40:53.000Z",
         "age_seconds": 0
       },
       "best_ask": {
         "value": null,
         "status": "unavailable",
-        "updated_at": "2026-08-25T11:35:53.000Z",
+        "updated_at": "2026-08-25T11:40:53.000Z",
         "age_seconds": 0
       },
       "mid_price": {
         "value": null,
         "status": "unavailable",
-        "updated_at": "2026-08-25T11:35:53.000Z",
+        "updated_at": "2026-08-25T11:40:53.000Z",
         "age_seconds": 0
       },
       "spread_bps": {
         "value": null,
         "status": "unavailable",
-        "updated_at": "2026-08-25T11:35:53.000Z",
+        "updated_at": "2026-08-25T11:40:53.000Z",
         "age_seconds": 0
       },
       "largest_bid_wall": {
@@ -234,80 +252,80 @@
       "imbalance_5": {
         "value": null,
         "status": "unavailable",
-        "updated_at": "2026-08-25T11:35:53.000Z",
+        "updated_at": "2026-08-25T11:40:53.000Z",
         "age_seconds": 0
       },
       "depth_5": {
         "bid_volume": {
           "value": null,
           "status": "unavailable",
-          "updated_at": "2026-08-25T11:35:53.000Z",
+          "updated_at": "2026-08-25T11:40:53.000Z",
           "age_seconds": 0
         },
         "ask_volume": {
           "value": null,
           "status": "unavailable",
-          "updated_at": "2026-08-25T11:35:53.000Z",
+          "updated_at": "2026-08-25T11:40:53.000Z",
           "age_seconds": 0
         }
       },
       "imbalance_10": {
         "value": null,
         "status": "unavailable",
-        "updated_at": "2026-08-25T11:35:53.000Z",
+        "updated_at": "2026-08-25T11:40:53.000Z",
         "age_seconds": 0
       },
       "depth_10": {
         "bid_volume": {
           "value": null,
           "status": "unavailable",
-          "updated_at": "2026-08-25T11:35:53.000Z",
+          "updated_at": "2026-08-25T11:40:53.000Z",
           "age_seconds": 0
         },
         "ask_volume": {
           "value": null,
           "status": "unavailable",
-          "updated_at": "2026-08-25T11:35:53.000Z",
+          "updated_at": "2026-08-25T11:40:53.000Z",
           "age_seconds": 0
         }
       },
       "imbalance_25": {
         "value": null,
         "status": "unavailable",
-        "updated_at": "2026-08-25T11:35:53.000Z",
+        "updated_at": "2026-08-25T11:40:53.000Z",
         "age_seconds": 0
       },
       "depth_25": {
         "bid_volume": {
           "value": null,
           "status": "unavailable",
-          "updated_at": "2026-08-25T11:35:53.000Z",
+          "updated_at": "2026-08-25T11:40:53.000Z",
           "age_seconds": 0
         },
         "ask_volume": {
           "value": null,
           "status": "unavailable",
-          "updated_at": "2026-08-25T11:35:53.000Z",
+          "updated_at": "2026-08-25T11:40:53.000Z",
           "age_seconds": 0
         }
       },
       "imbalance_50": {
         "value": null,
         "status": "unavailable",
-        "updated_at": "2026-08-25T11:35:53.000Z",
+        "updated_at": "2026-08-25T11:40:53.000Z",
         "age_seconds": 0
       },
       "depth_50": {
         "bid_volume": {
           "value": null,
           "status": "unavailable",
-          "updated_at": "2026-08-25T11:35:53.000Z",
+          "updated_at": "2026-08-25T11:40:53.000Z",
           "age_seconds": 0
         },
         "ask_volume": {
           "value": null,
           "status": "unavailable",
-          "updated_at": "2026-08-25T11:35:53.000Z",
+          "updated_at": "2026-08-25T11:40:53.000Z",
           "age_seconds": 0
         }
       }
@@ -523,29 +541,89 @@
         "collector_step": "ticker",
         "status": "unavailable",
         "http_status": 403,
-        "error_message": "Bybit HTTP 403",
-        "fetches_used": 1
+        "error_message": "Bybit HTTP 403: { error:The Amazon CloudFront distribution is configured to block access from your country }",
+        "response_body": "{ error:The Amazon CloudFront distribution is configured to block access from your country }",
+        "bybit_endpoint": "https://api.bytick.com",
+        "bybit_attempts": [
+          {
+            "endpoint": "https://api.bybit.com",
+            "status": 403,
+            "body": "{ error:The Amazon CloudFront distribution is configured to block access from your country }"
+          },
+          {
+            "endpoint": "https://api.bytick.com",
+            "status": 403,
+            "body": "{ error:The Amazon CloudFront distribution is configured to block access from your country }"
+          }
+        ],
+        "fetches_used": 1,
+        "actual_fetches_used": 2
       },
       {
         "collector_step": "last_1m_candle",
         "status": "unavailable",
         "http_status": 403,
-        "error_message": "Bybit HTTP 403",
-        "fetches_used": 2
+        "error_message": "Bybit HTTP 403: { error:The Amazon CloudFront distribution is configured to block access from your country }",
+        "response_body": "{ error:The Amazon CloudFront distribution is configured to block access from your country }",
+        "bybit_endpoint": "https://api.bytick.com",
+        "bybit_attempts": [
+          {
+            "endpoint": "https://api.bybit.com",
+            "status": 403,
+            "body": "{ error:The Amazon CloudFront distribution is configured to block access from your country }"
+          },
+          {
+            "endpoint": "https://api.bytick.com",
+            "status": 403,
+            "body": "{ error:The Amazon CloudFront distribution is configured to block access from your country }"
+          }
+        ],
+        "fetches_used": 2,
+        "actual_fetches_used": 4
       },
       {
         "collector_step": "recent_trades",
         "status": "unavailable",
         "http_status": 403,
-        "error_message": "Bybit HTTP 403",
-        "fetches_used": 3
+        "error_message": "Bybit HTTP 403: { error:The Amazon CloudFront distribution is configured to block access from your country }",
+        "response_body": "{ error:The Amazon CloudFront distribution is configured to block access from your country }",
+        "bybit_endpoint": "https://api.bytick.com",
+        "bybit_attempts": [
+          {
+            "endpoint": "https://api.bybit.com",
+            "status": 403,
+            "body": "{ error:The Amazon CloudFront distribution is configured to block access from your country }"
+          },
+          {
+            "endpoint": "https://api.bytick.com",
+            "status": 403,
+            "body": "{ error:The Amazon CloudFront distribution is configured to block access from your country }"
+          }
+        ],
+        "fetches_used": 3,
+        "actual_fetches_used": 6
       },
       {
         "collector_step": "orderbook",
         "status": "unavailable",
         "http_status": 403,
-        "error_message": "Bybit HTTP 403",
-        "fetches_used": 4
+        "error_message": "Bybit HTTP 403: { error:The Amazon CloudFront distribution is configured to block access from your country }",
+        "response_body": "{ error:The Amazon CloudFront distribution is configured to block access from your country }",
+        "bybit_endpoint": "https://api.bytick.com",
+        "bybit_attempts": [
+          {
+            "endpoint": "https://api.bybit.com",
+            "status": 403,
+            "body": "{ error:The Amazon CloudFront distribution is configured to block access from your country }"
+          },
+          {
+            "endpoint": "https://api.bytick.com",
+            "status": 403,
+            "body": "{ error:The Amazon CloudFront distribution is configured to block access from your country }"
+          }
+        ],
+        "fetches_used": 4,
+        "actual_fetches_used": 8
       }
     ],
     "read_only": true,
@@ -553,7 +631,7 @@
       "decision": "NO_TRADE",
       "setup_status": "WAITING",
       "setup_state": "NO_ACTIVE_SETUP",
-      "setup_id": "NO_TRADE:VWAP_BACKFILL_INCOMPLETE:29794295",
+      "setup_id": "NO_TRADE:VWAP_BACKFILL_INCOMPLETE:29794300",
       "bias": "NEUTRAL",
       "regime": "UNKNOWN",
       "long_score": 0,
@@ -586,7 +664,7 @@
     "decision": "NO_TRADE",
     "setup_status": "WAITING",
     "setup_state": "NO_ACTIVE_SETUP",
-    "setup_id": "NO_TRADE:VWAP_BACKFILL_INCOMPLETE:29794295",
+    "setup_id": "NO_TRADE:VWAP_BACKFILL_INCOMPLETE:29794300",
     "bias": "NEUTRAL",
     "regime": "UNKNOWN",
     "long_score": 0,
