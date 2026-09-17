@@ -1,5 +1,5 @@
 {
-  "mirrored_at_utc": "2026-09-17T02:15:04.000Z",
+  "mirrored_at_utc": "2026-09-17T02:20:04.000Z",
   "source": "zec-scalping-bridge.forciniti.workers.dev",
   "health": {
     "status": "ok",
@@ -27,13 +27,13 @@
       "last_error": null
     },
     "last_execution_evaluation": {
-      "evaluated_at": "2026-09-17T02:14:04.000Z",
+      "evaluated_at": "2026-09-17T02:19:04.000Z",
       "symbol": "ZECUSDT",
       "decision": "NO_TRADE",
       "raw_candidate_decision": "NO_TRADE",
       "effective_candidate_decision": "NO_TRADE",
-      "setup_type": "REVERSAL",
-      "setup_state": "WAITING",
+      "setup_type": "STRUCTURE_PULLBACK_CONTINUATION",
+      "setup_state": "EARLY_LONG_WATCH",
       "execution_ready": false,
       "hard_veto": true,
       "trigger": "NO_TRIGGER",
@@ -45,240 +45,37 @@
       "entry_quality": null,
       "entry_execution_ready_now": false,
       "candidate_latch": {
-        "status": "EXPIRED",
+        "status": "INVALIDATED",
         "used": false,
         "side": "LONG",
         "setup_type": "STRUCTURE_PULLBACK_CONTINUATION",
-        "age_seconds": 180,
+        "age_seconds": 120,
         "expires_in_seconds": 0,
-        "invalidation_reason": "TTL_EXPIRED"
+        "invalidation_reason": "ADVERSE_TRAP_CONFIRMED"
       },
       "duplicate_suppressed": false,
       "telegram_signal_deferred_by_lock": false,
       "telegram_delivery": {
         "attempted": false,
-        "result": null,
+        "result": {
+          "ok": true,
+          "code": "early_watch_telegram_suppressed"
+        },
         "recorded": false,
-        "early_watch_recorded": false
+        "early_watch_recorded": true
       },
       "veto_reasons": [
-        "FIRST_STRUCTURAL_BARRIER_TOO_CLOSE_HARD: 0.019881R < 0.2R",
+        "QUALITATIVE_VETO: recent SWEEP_HIGH not reclaimed/held — no immediate LONG",
+        "FIRST_STRUCTURAL_BARRIER_TOO_CLOSE_HARD: 0.028212R < 0.2R",
         "classification NOT_SCALP",
-        "trigger not confirmed",
-        "confidence below minimum (43 < 45)"
+        "trigger not confirmed"
       ],
       "missing_confirmations": [
-        "confirmed trigger",
-        "bid-side order book confirmation",
-        "VWAP reclaim/rejection confirmation"
+        "WAIT_LIQUIDITY_SWEEP_RELEASE",
+        "WAIT_DIRECTIONAL_FLOW"
       ]
     },
     "execution_history_last_10": [
-      {
-        "evaluated_at": "2026-09-17T02:05:04.000Z",
-        "symbol": "ZECUSDT",
-        "decision": "NO_TRADE",
-        "raw_candidate_decision": "NO_TRADE",
-        "effective_candidate_decision": "LONG",
-        "setup_type": "STRUCTURE_PULLBACK_CONTINUATION",
-        "setup_state": "WAIT_RETEST",
-        "execution_ready": false,
-        "hard_veto": false,
-        "trigger": "LONG_HIGHER_LOW_REJECTION_CONFIRMED",
-        "confidence_score": 72,
-        "arming_status": "ARMED_WAIT_ENTRY",
-        "arming_count": 1,
-        "arming_required": 1,
-        "execution_hold_reason": "LATE_OR_EXTENDED",
-        "entry_quality": "CHASE",
-        "entry_execution_ready_now": false,
-        "candidate_latch": {
-          "status": "LATCHED_CANDIDATE_REUSED",
-          "used": true,
-          "side": "LONG",
-          "setup_type": "STRUCTURE_PULLBACK_CONTINUATION",
-          "age_seconds": 60,
-          "expires_in_seconds": 60,
-          "invalidation_reason": null,
-          "fresh_raw_decision": "NO_TRADE"
-        },
-        "duplicate_suppressed": false,
-        "telegram_signal_deferred_by_lock": false,
-        "telegram_delivery": {
-          "attempted": false,
-          "result": null,
-          "recorded": false,
-          "early_watch_recorded": false
-        },
-        "veto_reasons": [],
-        "missing_confirmations": []
-      },
-      {
-        "evaluated_at": "2026-09-17T02:06:04.000Z",
-        "symbol": "ZECUSDT",
-        "decision": "NO_TRADE",
-        "raw_candidate_decision": "NO_TRADE",
-        "effective_candidate_decision": "NO_TRADE",
-        "setup_type": "STRUCTURE_PULLBACK_CONTINUATION",
-        "setup_state": "EARLY_LONG_WATCH",
-        "execution_ready": false,
-        "hard_veto": true,
-        "trigger": "LONG_TREND_PULLBACK_CONFIRMED",
-        "confidence_score": 39,
-        "arming_status": "IDLE",
-        "arming_count": 0,
-        "arming_required": null,
-        "execution_hold_reason": null,
-        "entry_quality": null,
-        "entry_execution_ready_now": false,
-        "candidate_latch": {
-          "status": "INVALIDATED",
-          "used": false,
-          "side": "LONG",
-          "setup_type": "STRUCTURE_PULLBACK_CONTINUATION",
-          "age_seconds": 120,
-          "expires_in_seconds": 0,
-          "invalidation_reason": "FATAL_CURRENT_VETO:ABSOLUTE_RSI_SIGNAL_GUARD: LONG blocked — RSI 5m 70.9459 > 70"
-        },
-        "duplicate_suppressed": false,
-        "telegram_signal_deferred_by_lock": false,
-        "telegram_delivery": {
-          "attempted": false,
-          "result": null,
-          "recorded": false,
-          "early_watch_recorded": false
-        },
-        "veto_reasons": [
-          "ABSOLUTE_RSI_SIGNAL_GUARD: LONG blocked — RSI 5m 70.9459 > 70"
-        ],
-        "missing_confirmations": [
-          "WAIT_BULLISH_RECLAIM_RESUMPTION"
-        ]
-      },
-      {
-        "evaluated_at": "2026-09-17T02:07:04.000Z",
-        "symbol": "ZECUSDT",
-        "decision": "NO_TRADE",
-        "raw_candidate_decision": "NO_TRADE",
-        "effective_candidate_decision": "NO_TRADE",
-        "setup_type": "REVERSAL",
-        "setup_state": "WAITING",
-        "execution_ready": false,
-        "hard_veto": true,
-        "trigger": "NO_TRIGGER",
-        "confidence_score": 25,
-        "arming_status": "IDLE",
-        "arming_count": 0,
-        "arming_required": null,
-        "execution_hold_reason": null,
-        "entry_quality": null,
-        "entry_execution_ready_now": false,
-        "candidate_latch": {
-          "status": "EMPTY",
-          "used": false,
-          "side": null,
-          "setup_type": null,
-          "age_seconds": null,
-          "expires_in_seconds": null,
-          "invalidation_reason": null
-        },
-        "duplicate_suppressed": false,
-        "telegram_signal_deferred_by_lock": false,
-        "telegram_delivery": {
-          "attempted": false,
-          "result": null,
-          "recorded": false,
-          "early_watch_recorded": false
-        },
-        "veto_reasons": [
-          "trigger not confirmed",
-          "confidence below minimum (25 < 45)"
-        ],
-        "missing_confirmations": [
-          "confirmed trigger",
-          "VWAP reclaim/rejection confirmation"
-        ]
-      },
-      {
-        "evaluated_at": "2026-09-17T02:08:04.000Z",
-        "symbol": "ZECUSDT",
-        "decision": "NO_TRADE",
-        "raw_candidate_decision": "NO_TRADE",
-        "effective_candidate_decision": "NO_TRADE",
-        "setup_type": "NONE",
-        "setup_state": "NO_ACTIVE_SETUP",
-        "execution_ready": false,
-        "hard_veto": false,
-        "trigger": "NO_TRIGGER",
-        "confidence_score": 0,
-        "arming_status": "IDLE",
-        "arming_count": 0,
-        "arming_required": null,
-        "execution_hold_reason": null,
-        "entry_quality": null,
-        "entry_execution_ready_now": false,
-        "candidate_latch": {
-          "status": "EMPTY",
-          "used": false,
-          "side": null,
-          "setup_type": null,
-          "age_seconds": null,
-          "expires_in_seconds": null,
-          "invalidation_reason": null
-        },
-        "duplicate_suppressed": false,
-        "telegram_signal_deferred_by_lock": false,
-        "telegram_delivery": {
-          "attempted": false,
-          "result": null,
-          "recorded": false,
-          "early_watch_recorded": false
-        },
-        "veto_reasons": [],
-        "missing_confirmations": [
-          "directional LONG or SHORT candidate"
-        ]
-      },
-      {
-        "evaluated_at": "2026-09-17T02:09:04.000Z",
-        "symbol": "ZECUSDT",
-        "decision": "NO_TRADE",
-        "raw_candidate_decision": "NO_TRADE",
-        "effective_candidate_decision": "NO_TRADE",
-        "setup_type": "NONE",
-        "setup_state": "NO_ACTIVE_SETUP",
-        "execution_ready": false,
-        "hard_veto": false,
-        "trigger": "NO_TRIGGER",
-        "confidence_score": 0,
-        "arming_status": "IDLE",
-        "arming_count": 0,
-        "arming_required": null,
-        "execution_hold_reason": null,
-        "entry_quality": null,
-        "entry_execution_ready_now": false,
-        "candidate_latch": {
-          "status": "EMPTY",
-          "used": false,
-          "side": null,
-          "setup_type": null,
-          "age_seconds": null,
-          "expires_in_seconds": null,
-          "invalidation_reason": null
-        },
-        "duplicate_suppressed": false,
-        "telegram_signal_deferred_by_lock": false,
-        "telegram_delivery": {
-          "attempted": false,
-          "result": null,
-          "recorded": false,
-          "early_watch_recorded": false
-        },
-        "veto_reasons": [],
-        "missing_confirmations": [
-          "directional LONG or SHORT candidate"
-        ]
-      },
       {
         "evaluated_at": "2026-09-17T02:10:04.000Z",
         "symbol": "ZECUSDT",
@@ -486,6 +283,212 @@
           "bid-side order book confirmation",
           "VWAP reclaim/rejection confirmation"
         ]
+      },
+      {
+        "evaluated_at": "2026-09-17T02:15:04.000Z",
+        "symbol": "ZECUSDT",
+        "decision": "NO_TRADE",
+        "raw_candidate_decision": "NO_TRADE",
+        "effective_candidate_decision": "NO_TRADE",
+        "setup_type": "NONE",
+        "setup_state": "NO_ACTIVE_SETUP",
+        "execution_ready": false,
+        "hard_veto": false,
+        "trigger": "NO_TRIGGER",
+        "confidence_score": 0,
+        "arming_status": "IDLE",
+        "arming_count": 0,
+        "arming_required": null,
+        "execution_hold_reason": null,
+        "entry_quality": null,
+        "entry_execution_ready_now": false,
+        "candidate_latch": {
+          "status": "EMPTY",
+          "used": false,
+          "side": null,
+          "setup_type": null,
+          "age_seconds": null,
+          "expires_in_seconds": null,
+          "invalidation_reason": null
+        },
+        "duplicate_suppressed": false,
+        "telegram_signal_deferred_by_lock": false,
+        "telegram_delivery": {
+          "attempted": false,
+          "result": null,
+          "recorded": false,
+          "early_watch_recorded": false
+        },
+        "veto_reasons": [],
+        "missing_confirmations": [
+          "directional LONG or SHORT candidate"
+        ]
+      },
+      {
+        "evaluated_at": "2026-09-17T02:16:04.000Z",
+        "symbol": "ZECUSDT",
+        "decision": "NO_TRADE",
+        "raw_candidate_decision": "NO_TRADE",
+        "effective_candidate_decision": "NO_TRADE",
+        "setup_type": "NONE",
+        "setup_state": "NO_ACTIVE_SETUP",
+        "execution_ready": false,
+        "hard_veto": false,
+        "trigger": "NO_TRIGGER",
+        "confidence_score": 0,
+        "arming_status": "IDLE",
+        "arming_count": 0,
+        "arming_required": null,
+        "execution_hold_reason": null,
+        "entry_quality": null,
+        "entry_execution_ready_now": false,
+        "candidate_latch": {
+          "status": "EMPTY",
+          "used": false,
+          "side": null,
+          "setup_type": null,
+          "age_seconds": null,
+          "expires_in_seconds": null,
+          "invalidation_reason": null
+        },
+        "duplicate_suppressed": false,
+        "telegram_signal_deferred_by_lock": false,
+        "telegram_delivery": {
+          "attempted": false,
+          "result": null,
+          "recorded": false,
+          "early_watch_recorded": false
+        },
+        "veto_reasons": [],
+        "missing_confirmations": [
+          "directional LONG or SHORT candidate"
+        ]
+      },
+      {
+        "evaluated_at": "2026-09-17T02:17:04.000Z",
+        "symbol": "ZECUSDT",
+        "decision": "NO_TRADE",
+        "raw_candidate_decision": "LONG",
+        "effective_candidate_decision": "LONG",
+        "setup_type": "STRUCTURE_PULLBACK_CONTINUATION",
+        "setup_state": "WAIT_RECLAIM",
+        "execution_ready": false,
+        "hard_veto": false,
+        "trigger": "LONG_HIGHER_LOW_REJECTION_CONFIRMED",
+        "confidence_score": 55,
+        "arming_status": "ARMED_WAIT_ENTRY",
+        "arming_count": 1,
+        "arming_required": 1,
+        "execution_hold_reason": "PRICE_NOT_RECLAIMED_ENTRY_ANCHOR",
+        "entry_quality": "WAIT_RECLAIM",
+        "entry_execution_ready_now": false,
+        "candidate_latch": {
+          "status": "LATCHED_FRESH_CANDIDATE",
+          "used": false,
+          "side": "LONG",
+          "setup_type": "STRUCTURE_PULLBACK_CONTINUATION",
+          "age_seconds": 0,
+          "expires_in_seconds": 120,
+          "invalidation_reason": null
+        },
+        "duplicate_suppressed": false,
+        "telegram_signal_deferred_by_lock": false,
+        "telegram_delivery": {
+          "attempted": false,
+          "result": null,
+          "recorded": false,
+          "early_watch_recorded": false
+        },
+        "veto_reasons": [],
+        "missing_confirmations": []
+      },
+      {
+        "evaluated_at": "2026-09-17T02:18:04.000Z",
+        "symbol": "ZECUSDT",
+        "decision": "LONG",
+        "raw_candidate_decision": "NO_TRADE",
+        "effective_candidate_decision": "LONG",
+        "setup_type": "STRUCTURE_PULLBACK_CONTINUATION",
+        "setup_state": "NEW_SETUP",
+        "execution_ready": true,
+        "hard_veto": false,
+        "trigger": "LONG_HIGHER_LOW_REJECTION_CONFIRMED",
+        "confidence_score": 55,
+        "arming_status": "CONFIRMED_ENTRY_EFFICIENT",
+        "arming_count": 1,
+        "arming_required": 1,
+        "execution_hold_reason": null,
+        "entry_quality": "EXCELLENT",
+        "entry_execution_ready_now": true,
+        "candidate_latch": {
+          "status": "LATCHED_CANDIDATE_REUSED",
+          "used": true,
+          "side": "LONG",
+          "setup_type": "STRUCTURE_PULLBACK_CONTINUATION",
+          "age_seconds": 60,
+          "expires_in_seconds": 60,
+          "invalidation_reason": null,
+          "fresh_raw_decision": "NO_TRADE"
+        },
+        "duplicate_suppressed": false,
+        "telegram_signal_deferred_by_lock": true,
+        "telegram_delivery": {
+          "attempted": false,
+          "result": null,
+          "recorded": false,
+          "early_watch_recorded": false
+        },
+        "veto_reasons": [],
+        "missing_confirmations": []
+      },
+      {
+        "evaluated_at": "2026-09-17T02:19:04.000Z",
+        "symbol": "ZECUSDT",
+        "decision": "NO_TRADE",
+        "raw_candidate_decision": "NO_TRADE",
+        "effective_candidate_decision": "NO_TRADE",
+        "setup_type": "STRUCTURE_PULLBACK_CONTINUATION",
+        "setup_state": "EARLY_LONG_WATCH",
+        "execution_ready": false,
+        "hard_veto": true,
+        "trigger": "NO_TRIGGER",
+        "confidence_score": 39,
+        "arming_status": "IDLE",
+        "arming_count": 0,
+        "arming_required": null,
+        "execution_hold_reason": null,
+        "entry_quality": null,
+        "entry_execution_ready_now": false,
+        "candidate_latch": {
+          "status": "INVALIDATED",
+          "used": false,
+          "side": "LONG",
+          "setup_type": "STRUCTURE_PULLBACK_CONTINUATION",
+          "age_seconds": 120,
+          "expires_in_seconds": 0,
+          "invalidation_reason": "ADVERSE_TRAP_CONFIRMED"
+        },
+        "duplicate_suppressed": false,
+        "telegram_signal_deferred_by_lock": false,
+        "telegram_delivery": {
+          "attempted": false,
+          "result": {
+            "ok": true,
+            "code": "early_watch_telegram_suppressed"
+          },
+          "recorded": false,
+          "early_watch_recorded": true
+        },
+        "veto_reasons": [
+          "QUALITATIVE_VETO: recent SWEEP_HIGH not reclaimed/held — no immediate LONG",
+          "FIRST_STRUCTURAL_BARRIER_TOO_CLOSE_HARD: 0.028212R < 0.2R",
+          "classification NOT_SCALP",
+          "trigger not confirmed"
+        ],
+        "missing_confirmations": [
+          "WAIT_LIQUIDITY_SWEEP_RELEASE",
+          "WAIT_DIRECTIONAL_FLOW"
+        ]
       }
     ],
     "qualified_candidate_latch": {
@@ -637,60 +640,60 @@
         "*/5 * * * *",
         "*/2 * * * *"
       ],
-      "last_collect_at": "2026-09-17T02:14:04.000Z",
+      "last_collect_at": "2026-09-17T02:19:04.000Z",
       "last_collect_status": "ok"
     },
     "database": {
       "status": "ok",
       "decision_rows": 1002,
-      "market_minute_rows": 40449
+      "market_minute_rows": 40454
     }
   },
   "latest": {
     "symbol": "ZECUSDT",
     "category": "SWAP",
-    "timestamp_utc": "2026-09-17T02:15:04.000Z",
+    "timestamp_utc": "2026-09-17T02:20:04.000Z",
     "market": {
-      "last_price": 1361.27,
-      "bid": 1361.26,
-      "ask": 1361.27,
-      "mark_price": 1361.67,
+      "last_price": 1364.53,
+      "bid": 1364.53,
+      "ask": 1364.54,
+      "mark_price": 1364.45,
       "index_price": 0,
-      "funding_rate": -0.000437470202624,
-      "open_interest": 138115.43,
-      "open_interest_value": 188214039.9239,
-      "volume_24h": 2171638.09,
-      "turnover_24h": 2956185782.7742996,
+      "funding_rate": -0.0004416076260943,
+      "open_interest": 138578.75,
+      "open_interest_value": 189180780.5625,
+      "volume_24h": 2171541.82,
+      "turnover_24h": 2963133959.6446,
       "status": "ok",
-      "updated_at_utc": "2026-09-17T02:15:04.000Z"
+      "updated_at_utc": "2026-09-17T02:20:04.000Z"
     },
     "vwap": {
       "session": {
-        "value": 1355.2292429335516,
+        "value": 1355.5390647221568,
         "status": "ok",
-        "bars_used": 132,
+        "bars_used": 138,
         "backfill_complete": true,
         "anchor_utc": "2026-09-17T00:00:00.000Z",
-        "last_candle_utc": "2026-09-17T02:13:00.000Z",
-        "updated_at_utc": "2026-09-17T02:14:04.000Z",
-        "cursor_utc": "2026-09-17T02:14:00.000Z"
+        "last_candle_utc": "2026-09-17T02:19:00.000Z",
+        "updated_at_utc": "2026-09-17T02:20:04.000Z",
+        "cursor_utc": "2026-09-17T02:20:00.000Z"
       },
       "weekly": {
-        "value": 1195.003070762199,
+        "value": 1195.1447542071394,
         "status": "ok",
-        "bars_used": 4407,
+        "bars_used": 4412,
         "backfill_complete": true,
         "anchor_utc": "2026-09-14T00:00:00.000Z",
-        "last_candle_utc": "2026-09-17T02:13:00.000Z",
-        "updated_at_utc": "2026-09-17T02:14:04.000Z",
-        "cursor_utc": "2026-09-17T02:14:00.000Z"
+        "last_candle_utc": "2026-09-17T02:18:00.000Z",
+        "updated_at_utc": "2026-09-17T02:19:04.000Z",
+        "cursor_utc": "2026-09-17T02:19:00.000Z"
       },
       "status": "ok",
       "source": "OKX ZEC-USDT-SWAP 1m candles, HLC3*base_currency_volume(volCcy)",
-      "last_vs_session_pct": 0.4457369185284499,
-      "last_vs_weekly_pct": 13.913514810614869,
-      "session_bars_used": 132,
-      "weekly_bars_used": 4407,
+      "last_vs_session_pct": 0.6632737861882232,
+      "last_vs_weekly_pct": 14.172780761208381,
+      "session_bars_used": 138,
+      "weekly_bars_used": 4412,
       "session_backfill_complete": true,
       "weekly_backfill_complete": true,
       "session_anchor_utc": "2026-09-17T00:00:00.000Z",
@@ -698,37 +701,37 @@
     },
     "bars_used": {
       "cloud_1m": 358,
-      "session_1m": 132,
-      "weekly_1m": 4407
+      "session_1m": 138,
+      "weekly_1m": 4412
     },
     "microstructure": {
       "taker_buy_volume": {
         "value": 0,
         "status": "ok",
-        "updated_at": "2026-09-17T02:14:00.000Z",
+        "updated_at": "2026-09-17T02:19:00.000Z",
         "age_seconds": 64
       },
       "taker_sell_volume": {
         "value": 0,
         "status": "ok",
-        "updated_at": "2026-09-17T02:14:00.000Z",
+        "updated_at": "2026-09-17T02:19:00.000Z",
         "age_seconds": 64
       },
       "taker_volume_delta": {
         "value": 0,
         "status": "ok",
-        "updated_at": "2026-09-17T02:14:00.000Z",
+        "updated_at": "2026-09-17T02:19:00.000Z",
         "age_seconds": 64
       },
       "taker_delta_ratio": {
         "value": null,
         "status": "unavailable",
-        "updated_at": "2026-09-17T02:14:00.000Z",
+        "updated_at": "2026-09-17T02:19:00.000Z",
         "age_seconds": 64
       },
       "trade_count": 0,
       "trade_collection_status": "websocket_live",
-      "trade_collection_updated_at_utc": "2026-09-17T02:14:04.000Z",
+      "trade_collection_updated_at_utc": "2026-09-17T02:19:04.000Z",
       "windows": {
         "1m": {
           "taker_buy_volume": 0,
@@ -739,19 +742,19 @@
           "status": "unavailable"
         },
         "3m": {
-          "taker_buy_volume": 15492,
-          "taker_sell_volume": 3517,
-          "taker_volume_delta": 11975,
-          "taker_delta_ratio": 0.6299647535377979,
-          "trade_count": 535,
+          "taker_buy_volume": 18029,
+          "taker_sell_volume": 21731,
+          "taker_volume_delta": -3702,
+          "taker_delta_ratio": -0.09310865191146882,
+          "trade_count": 707,
           "status": "ok"
         },
         "5m": {
-          "taker_buy_volume": 32074,
-          "taker_sell_volume": 37261,
-          "taker_volume_delta": -5187,
-          "taker_delta_ratio": -0.07481070166582535,
-          "trade_count": 1605,
+          "taker_buy_volume": 43243,
+          "taker_sell_volume": 41726,
+          "taker_volume_delta": 1517,
+          "taker_delta_ratio": 0.01785357012557521,
+          "trade_count": 1688,
           "status": "ok"
         }
       },
@@ -759,178 +762,178 @@
         "status": "SAMPLED_FAST_READY",
         "mode": "SAMPLED_FAST",
         "quality": "HIGH",
-        "state": "BUY_PRESSURE",
-        "taker_buy_volume": 14558,
-        "taker_sell_volume": 2916,
-        "taker_delta_ratio": 0.6662469955362252,
+        "state": "SELL_PRESSURE",
+        "taker_buy_volume": 7383,
+        "taker_sell_volume": 17535,
+        "taker_delta_ratio": -0.4074163255477968,
         "trade_count": 500,
-        "sample_span_seconds": 17.659,
-        "newest_age_seconds": 0.019,
-        "aligned_chunks": 3,
+        "sample_span_seconds": 18.753,
+        "newest_age_seconds": 0,
+        "aligned_chunks": 2,
         "chunk_directions": [
-          "BUY",
-          "BUY",
-          "BUY"
+          "SELL",
+          "SELL",
+          "BALANCED"
         ],
         "has_opposite_chunk": false,
         "sample_truncated": true,
-        "updated_at_ms": 1789611244000,
-        "age_seconds": 60
+        "updated_at_ms": 1789611604000,
+        "age_seconds": 0
       },
       "realized_volatility_bps": {
-        "value": 145.48748819866987,
+        "value": 141.5392315391315,
         "status": "ok",
-        "updated_at": "2026-09-17T02:14:00.000Z",
+        "updated_at": "2026-09-17T02:19:00.000Z",
         "age_seconds": 64
       }
     },
     "orderbook": {
       "status": "ok",
-      "updated_at": "2026-09-17T02:14:04.102Z",
+      "updated_at": "2026-09-17T02:19:04.102Z",
       "age_seconds": 59.898,
       "best_bid": {
-        "value": 1359.63,
+        "value": 1364.53,
         "status": "ok",
-        "updated_at": "2026-09-17T02:14:04.102Z",
+        "updated_at": "2026-09-17T02:19:04.102Z",
         "age_seconds": 59.898
       },
       "best_ask": {
-        "value": 1359.64,
+        "value": 1364.54,
         "status": "ok",
-        "updated_at": "2026-09-17T02:14:04.102Z",
+        "updated_at": "2026-09-17T02:19:04.102Z",
         "age_seconds": 59.898
       },
       "mid_price": {
-        "value": 1359.6350000000002,
+        "value": 1364.5349999999999,
         "status": "ok",
-        "updated_at": "2026-09-17T02:14:04.102Z",
+        "updated_at": "2026-09-17T02:19:04.102Z",
         "age_seconds": 59.898
       },
       "spread_bps": {
-        "value": 0.073549151058857,
+        "value": 0.07328503849289983,
         "status": "ok",
-        "updated_at": "2026-09-17T02:14:04.102Z",
+        "updated_at": "2026-09-17T02:19:04.102Z",
         "age_seconds": 59.898
       },
       "largest_bid_wall": {
         "side": "bid",
         "price": {
-          "value": 1358.84,
+          "value": 1364.01,
           "status": "ok",
-          "updated_at": "2026-09-17T02:14:04.102Z",
+          "updated_at": "2026-09-17T02:19:04.102Z",
           "age_seconds": 59.898
         },
         "size": {
-          "value": 1852,
+          "value": 1764,
           "status": "ok",
-          "updated_at": "2026-09-17T02:14:04.102Z",
+          "updated_at": "2026-09-17T02:19:04.102Z",
           "age_seconds": 59.898
         },
         "distance_pct": {
-          "value": -0.0584715750918674,
+          "value": -0.038474645208796954,
           "status": "ok",
-          "updated_at": "2026-09-17T02:14:04.102Z",
+          "updated_at": "2026-09-17T02:19:04.102Z",
           "age_seconds": 59.898
         }
       },
       "largest_ask_wall": {
         "side": "ask",
         "price": {
-          "value": 1360.07,
+          "value": 1365,
           "status": "ok",
-          "updated_at": "2026-09-17T02:14:04.102Z",
+          "updated_at": "2026-09-17T02:19:04.102Z",
           "age_seconds": 59.898
         },
         "size": {
-          "value": 4001,
+          "value": 4117,
           "status": "ok",
-          "updated_at": "2026-09-17T02:14:04.102Z",
+          "updated_at": "2026-09-17T02:19:04.102Z",
           "age_seconds": 59.898
         },
         "distance_pct": {
-          "value": 0.031993880710601275,
+          "value": 0.0340775428992357,
           "status": "ok",
-          "updated_at": "2026-09-17T02:14:04.102Z",
+          "updated_at": "2026-09-17T02:19:04.102Z",
           "age_seconds": 59.898
         }
       },
       "imbalance_5": {
-        "value": -0.6890595009596929,
+        "value": 0.5706959706959707,
         "status": "ok",
-        "updated_at": "2026-09-17T02:14:04.102Z",
+        "updated_at": "2026-09-17T02:19:04.102Z",
         "age_seconds": 59.898
       },
       "depth_5": {
         "bid_volume": {
-          "value": 81,
+          "value": 1072,
           "status": "ok",
-          "updated_at": "2026-09-17T02:14:04.102Z",
+          "updated_at": "2026-09-17T02:19:04.102Z",
           "age_seconds": 59.898
         },
         "ask_volume": {
-          "value": 440,
+          "value": 293,
           "status": "ok",
-          "updated_at": "2026-09-17T02:14:04.102Z",
+          "updated_at": "2026-09-17T02:19:04.102Z",
           "age_seconds": 59.898
         }
       },
       "imbalance_10": {
-        "value": -0.6458557588805167,
+        "value": 0.30608175473579263,
         "status": "ok",
-        "updated_at": "2026-09-17T02:14:04.102Z",
+        "updated_at": "2026-09-17T02:19:04.102Z",
         "age_seconds": 59.898
       },
       "depth_10": {
         "bid_volume": {
-          "value": 329,
+          "value": 1310,
           "status": "ok",
-          "updated_at": "2026-09-17T02:14:04.102Z",
+          "updated_at": "2026-09-17T02:19:04.102Z",
           "age_seconds": 59.898
         },
         "ask_volume": {
-          "value": 1529,
+          "value": 696,
           "status": "ok",
-          "updated_at": "2026-09-17T02:14:04.102Z",
+          "updated_at": "2026-09-17T02:19:04.102Z",
           "age_seconds": 59.898
         }
       },
       "imbalance_25": {
-        "value": -0.6708732963149924,
+        "value": 0.21319340329835082,
         "status": "ok",
-        "updated_at": "2026-09-17T02:14:04.102Z",
+        "updated_at": "2026-09-17T02:19:04.102Z",
         "age_seconds": 59.898
       },
       "depth_25": {
         "bid_volume": {
-          "value": 978,
+          "value": 2023,
           "status": "ok",
-          "updated_at": "2026-09-17T02:14:04.102Z",
+          "updated_at": "2026-09-17T02:19:04.102Z",
           "age_seconds": 59.898
         },
         "ask_volume": {
-          "value": 4965,
+          "value": 1312,
           "status": "ok",
-          "updated_at": "2026-09-17T02:14:04.102Z",
+          "updated_at": "2026-09-17T02:19:04.102Z",
           "age_seconds": 59.898
         }
       },
       "imbalance_50": {
-        "value": -0.305064308681672,
+        "value": -0.16591639871382638,
         "status": "ok",
-        "updated_at": "2026-09-17T02:14:04.102Z",
+        "updated_at": "2026-09-17T02:19:04.102Z",
         "age_seconds": 59.898
       },
       "depth_50": {
         "bid_volume": {
-          "value": 6916,
+          "value": 7782,
           "status": "ok",
-          "updated_at": "2026-09-17T02:14:04.102Z",
+          "updated_at": "2026-09-17T02:19:04.102Z",
           "age_seconds": 59.898
         },
         "ask_volume": {
-          "value": 12988,
+          "value": 10878,
           "status": "ok",
-          "updated_at": "2026-09-17T02:14:04.102Z",
+          "updated_at": "2026-09-17T02:19:04.102Z",
           "age_seconds": 59.898
         }
       }
@@ -938,69 +941,69 @@
     "derivatives": {
       "open_interest": {
         "current": {
+          "value": 138578.75,
+          "status": "ok",
+          "updated_at": "2026-09-17T02:19:52.496Z",
+          "age_seconds": 11.504
+        },
+        "current_usd_estimated": {
+          "value": 189083775.4375,
+          "status": "ok",
+          "updated_at": "2026-09-17T02:19:52.496Z",
+          "age_seconds": 11.504
+        },
+        "5m_ago": {
           "value": 138115.43,
           "status": "ok",
           "updated_at": "2026-09-17T02:14:48.503Z",
-          "age_seconds": 15.497
-        },
-        "current_usd_estimated": {
-          "value": 188067637.5681,
-          "status": "ok",
-          "updated_at": "2026-09-17T02:14:48.503Z",
-          "age_seconds": 15.497
-        },
-        "5m_ago": {
-          "value": 137851.2,
-          "status": "ok",
-          "updated_at": "2026-09-17T02:10:00.650Z",
-          "age_seconds": 303.35
+          "age_seconds": 315.497
         },
         "change_5m_pct": {
-          "value": 0.19167769304873072,
+          "value": 0.3354585363851248,
           "status": "ok",
-          "updated_at": "2026-09-17T02:14:48.503Z",
-          "age_seconds": 15.497
+          "updated_at": "2026-09-17T02:19:52.496Z",
+          "age_seconds": 11.504
         },
         "15m_ago": {
-          "value": 135891.78,
+          "value": 137058.7,
           "status": "stale",
-          "updated_at": "2026-09-17T02:00:00.692Z",
-          "age_seconds": 903.308
+          "updated_at": "2026-09-17T02:04:48.487Z",
+          "age_seconds": 915.513
         },
         "change_15m_pct": {
-          "value": 1.6363388572877557,
+          "value": 1.1090503557964482,
           "status": "ok",
-          "updated_at": "2026-09-17T02:14:48.503Z",
-          "age_seconds": 15.497
+          "updated_at": "2026-09-17T02:19:52.496Z",
+          "age_seconds": 11.504
         },
         "1h_ago": {
-          "value": 129307.27,
+          "value": 129883.34,
           "status": "stale",
-          "updated_at": "2026-09-17T01:14:56.902Z",
-          "age_seconds": 3607.098
+          "updated_at": "2026-09-17T01:20:01.045Z",
+          "age_seconds": 3602.955
         },
         "change_1h_pct": {
-          "value": 6.81180570899067,
+          "value": 6.69478471988787,
           "status": "ok",
-          "updated_at": "2026-09-17T02:14:48.503Z",
-          "age_seconds": 15.497
+          "updated_at": "2026-09-17T02:19:52.496Z",
+          "age_seconds": 11.504
         }
       },
       "price_open_interest": {
         "5m": {
-          "classification": "NEUTRAL",
-          "price_change_pct": 0.1162029580271895,
-          "oi_change_pct": 0.19167769304873072
+          "classification": "PRICE_UP_OI_UP",
+          "price_change_pct": 0.3330882352941211,
+          "oi_change_pct": 0.3354585363851248
         },
         "15m": {
           "classification": "PRICE_DOWN_OI_UP",
-          "price_change_pct": -0.18551107200469596,
-          "oi_change_pct": 1.6363388572877557
+          "price_change_pct": -0.263861885479566,
+          "oi_change_pct": 1.1090503557964482
         },
         "1h": {
           "classification": "PRICE_UP_OI_UP",
-          "price_change_pct": 1.16152908653131,
-          "oi_change_pct": 6.81180570899067
+          "price_change_pct": 1.0568334987335781,
+          "oi_change_pct": 6.69478471988787
         }
       },
       "long_short_ratio": {
@@ -1009,26 +1012,26 @@
           "long_ratio": {
             "value": 0.2537313432835821,
             "status": "ok",
-            "updated_at": "2026-09-17T02:10:00.000Z",
-            "age_seconds": 304
+            "updated_at": "2026-09-17T02:20:00.000Z",
+            "age_seconds": 4
           },
           "short_ratio": {
             "value": 0.7462686567164178,
             "status": "ok",
-            "updated_at": "2026-09-17T02:10:00.000Z",
-            "age_seconds": 304
+            "updated_at": "2026-09-17T02:20:00.000Z",
+            "age_seconds": 4
           },
           "long_short_ratio": {
             "value": 0.34,
             "status": "ok",
-            "updated_at": "2026-09-17T02:10:00.000Z",
-            "age_seconds": 304
+            "updated_at": "2026-09-17T02:20:00.000Z",
+            "age_seconds": 4
           },
           "long_short_ratio_change": {
             "value": 0,
             "status": "ok",
-            "updated_at": "2026-09-17T02:10:00.000Z",
-            "age_seconds": 304
+            "updated_at": "2026-09-17T02:20:00.000Z",
+            "age_seconds": 4
           }
         },
         "15m": {
@@ -1036,53 +1039,53 @@
           "long_ratio": {
             "value": 0.2537313432835821,
             "status": "ok",
-            "updated_at": "2026-09-17T02:10:00.000Z",
-            "age_seconds": 304
+            "updated_at": "2026-09-17T02:20:00.000Z",
+            "age_seconds": 4
           },
           "short_ratio": {
             "value": 0.7462686567164178,
             "status": "ok",
-            "updated_at": "2026-09-17T02:10:00.000Z",
-            "age_seconds": 304
+            "updated_at": "2026-09-17T02:20:00.000Z",
+            "age_seconds": 4
           },
           "long_short_ratio": {
             "value": 0.34,
             "status": "ok",
-            "updated_at": "2026-09-17T02:10:00.000Z",
-            "age_seconds": 304
+            "updated_at": "2026-09-17T02:20:00.000Z",
+            "age_seconds": 4
           },
           "long_short_ratio_change": {
             "value": 0,
             "status": "ok",
-            "updated_at": "2026-09-17T02:10:00.000Z",
-            "age_seconds": 304
+            "updated_at": "2026-09-17T02:20:00.000Z",
+            "age_seconds": 4
           }
         },
         "1h": {
           "indicator": "ACCOUNT_POSITION_RATIO",
           "long_ratio": {
-            "value": 0.25925925925925924,
+            "value": 0.2537313432835821,
             "status": "stale",
             "updated_at": "2026-09-17T02:00:00.000Z",
-            "age_seconds": 904
+            "age_seconds": 1204
           },
           "short_ratio": {
-            "value": 0.7407407407407407,
+            "value": 0.7462686567164178,
             "status": "stale",
             "updated_at": "2026-09-17T02:00:00.000Z",
-            "age_seconds": 904
+            "age_seconds": 1204
           },
           "long_short_ratio": {
-            "value": 0.35,
+            "value": 0.34,
             "status": "stale",
             "updated_at": "2026-09-17T02:00:00.000Z",
-            "age_seconds": 904
+            "age_seconds": 1204
           },
           "long_short_ratio_change": {
-            "value": 0,
+            "value": -0.009999999999999953,
             "status": "stale",
             "updated_at": "2026-09-17T02:00:00.000Z",
-            "age_seconds": 904
+            "age_seconds": 1204
           }
         }
       }
@@ -1185,11 +1188,11 @@
         "sampled_fast_status": "SAMPLED_FAST_READY",
         "sampled_fast_quality": "HIGH",
         "sampled_fast_count": 500,
-        "sampled_fast_span_seconds": 17.659,
-        "sampled_fast_aligned_chunks": 3,
+        "sampled_fast_span_seconds": 26.715,
+        "sampled_fast_aligned_chunks": 0,
         "sampled_fast_chunk_directions": [
-          "BUY",
-          "BUY",
+          "SELL",
+          "SELL",
           "BUY"
         ]
       },
@@ -1214,7 +1217,7 @@
       "connection_status": "connected",
       "public_connection_status": "connected",
       "business_connection_status": "connected",
-      "last_message_utc": "2026-09-17T02:15:04.178Z",
+      "last_message_utc": "2026-09-17T02:20:04.278Z",
       "last_message_age_seconds": 0,
       "reconnect_count": 0,
       "reconnect_reason": null,
@@ -1262,51 +1265,159 @@
     "scalping": {
       "strategy_version": "ZEC_SCALP_FINAL_V1_42_10_SUPERTREND_STRICT_1M3M5M_4CONF_40_2026-09-13",
       "decision": "NO_TRADE",
-      "setup_type": "NONE",
+      "setup_type": "STRUCTURE_PULLBACK_CONTINUATION",
       "lane_selection": {
-        "execution_setup_type": "NONE",
-        "watch_setup_type": null,
-        "output_setup_type": "NONE",
-        "execution_side": null,
-        "watch_side": null,
-        "output_side": null,
-        "mode": "FALLBACK",
-        "watch_overrides_execution_semantics": false,
-        "watch_geometry_source": null,
-        "watch_qualification_source": null,
+        "execution_setup_type": "REVERSAL",
+        "watch_setup_type": "STRUCTURE_PULLBACK_CONTINUATION",
+        "output_setup_type": "STRUCTURE_PULLBACK_CONTINUATION",
+        "execution_side": "LONG",
+        "watch_side": "LONG",
+        "output_side": "LONG",
+        "mode": "PRE_TRIGGER_WATCH",
+        "watch_overrides_execution_semantics": true,
+        "watch_geometry_source": "STRUCTURE",
+        "watch_qualification_source": "STRUCTURE_NATIVE_QUALIFIED_WATCH",
         "native_fast_pretrigger_qualified": false,
-        "native_structure_watch_qualified": false
+        "native_structure_watch_qualified": true
       },
-      "watch_geometry_source": null,
+      "watch_geometry_source": "STRUCTURE",
       "execution_ready": false,
       "setup_quality": "NO_TRADE",
-      "setup_status": "WAITING",
-      "setup_state": "NO_ACTIVE_SETUP",
-      "early_setup_detected": false,
-      "early_setup_state": "NONE",
-      "early_entry_state": "STANDARD",
+      "setup_status": "WATCHING",
+      "setup_state": "EARLY_LONG_WATCH",
+      "early_setup_detected": true,
+      "early_setup_state": "EARLY_LONG_WATCH",
+      "early_entry_state": "EARLY_LONG_WATCH",
       "early_entry_ready": false,
       "entry_ready": false,
-      "early_watch_qualified": false,
-      "watch_side": null,
-      "next_confirmation_price": null,
-      "watch_trigger_price": null,
+      "early_watch_qualified": true,
+      "watch_side": "LONG",
+      "next_confirmation_price": 1370.35,
+      "watch_trigger_price": 1370.35,
       "watch_trigger_semantics": "NEXT_CONFIRMATION_ONLY",
-      "watch_invalidation_price": null,
-      "early_entry_missing_conditions": [],
+      "watch_invalidation_price": 1357.01,
+      "early_entry_missing_conditions": [
+        "WAIT_STRUCTURAL_BREAK",
+        "WAIT_LIQUIDITY_SWEEP_RELEASE",
+        "WAIT_DIRECTIONAL_FLOW"
+      ],
+      "momentum_exhaustion_score": 0,
+      "momentum_phase": "HEALTHY",
+      "rsi_phase": "LONG_ACCELERATION_ZONE",
+      "macd_phase": "NEUTRAL",
+      "price_extension_score": 0,
+      "fast_trend_transition": "STABLE_DOWN",
+      "order_flow_transition": "BALANCED_TOWARD_SELL",
+      "late_entry_flag": false,
+      "early_entry_reasons": [
+        "STRUCTURAL_CONTEXT_VALID",
+        "RSI_HEALTHY_EARLY_ZONE",
+        "PRICE_NOT_OVEREXTENDED"
+      ],
+      "momentum_timing": {
+        "early_setup_detected": true,
+        "early_setup_state": "EARLY_LONG_WATCH",
+        "early_timing_signal_count": 1,
+        "early_transition_core_confirmed": true,
+        "early_timing_candidate": false,
+        "early_entry_state": "EARLY_LONG_WATCH",
+        "early_entry_ready": false,
+        "early_entry_reasons": [
+          "STRUCTURAL_CONTEXT_VALID",
+          "RSI_HEALTHY_EARLY_ZONE",
+          "PRICE_NOT_OVEREXTENDED"
+        ],
+        "momentum_exhaustion_score": 0,
+        "momentum_exhaustion_groups": [],
+        "momentum_exhaustion_reasons": [],
+        "momentum_phase": "HEALTHY",
+        "rsi_phase": "LONG_ACCELERATION_ZONE",
+        "macd_phase": "NEUTRAL",
+        "late_entry_flag": false,
+        "price_extension_high": false,
+        "quality_cap_required": false,
+        "wait_for_reset": false,
+        "fast_trend_transition": "STABLE_DOWN",
+        "order_flow_transition": "BALANCED_TOWARD_SELL",
+        "rsi": 62.0279,
+        "rsi_prev": 61.3871,
+        "rsi_prev2": 58.8052,
+        "rsi_slope": 0.640751,
+        "macd": {
+          "dif": 7.5569,
+          "dea": 8.1657,
+          "histogram": -0.608798,
+          "histogram_slope": -0.180111,
+          "histogram_acceleration": 0.104586,
+          "dif_slope": -0.33231,
+          "dea_slope": -0.152199,
+          "histogram_z": -1.4578,
+          "recent_cross_direction": "NONE"
+        },
+        "ema9_5m": 1362.22,
+        "atr_5m": 9.9573,
+        "distance_from_ema9_pct": 0.169699,
+        "distance_from_ema9_atr": 0.232159,
+        "distance_from_session_vwap_pct": 0.663274,
+        "distance_from_session_vwap_atr": 0.902949,
+        "distance_from_recent_impulse_origin_pct": 0.130618,
+        "move_last_3m_pct": 0.118214,
+        "move_last_5m_pct": 0.058705,
+        "move_atr_multiple": 0.178763,
+        "price_extension_score": 0,
+        "price_extension_phase": "LOW",
+        "order_flow_state": "BALANCED",
+        "order_flow_prev_state": "BUY_PRESSURE",
+        "order_flow_delta_ratio": -0.093109,
+        "order_flow_prev_delta_ratio": 0.435968,
+        "fast_trend_prev": "NONE",
+        "structural_context_valid": true,
+        "structural_context_potential": true,
+        "setup_type_context": "STRUCTURE_PULLBACK_CONTINUATION",
+        "entry_ready": false,
+        "pre_trigger_structure_candidate": true,
+        "pre_trigger_reasons": [
+          "STRUCTURE_LOCATION_PRE_TRIGGER"
+        ],
+        "pre_trigger_side": "LONG",
+        "timing_side": "SHORT",
+        "pre_trigger_timing_conflict": true,
+        "early_watch_block_reason": null,
+        "early_watch_side_conflict": {
+          "pre_trigger_side": "LONG",
+          "timing_side": "SHORT"
+        },
+        "timing_side_scores": {
+          "long": 1,
+          "short": 3
+        },
+        "timing_side_reasons": {
+          "long": [
+            "RSI_LONG_ACCELERATION"
+          ],
+          "short": [
+            "FAST_TREND_DIRECTION_DOWN",
+            "MACD_EARLY_BEARISH_ACCELERATION",
+            "FLOW_TRANSITION_TO_SELL"
+          ]
+        },
+        "early_setup_detection_mode": "PRE_TRIGGER_EARLY_SETUP",
+        "next_confirmation_price": 1370.35,
+        "watch_trigger_semantics": "NEXT_CONFIRMATION_ONLY"
+      },
       "setup_id": null,
       "regime": "HIGH_VOLATILITY",
       "regime_confidence": 70,
       "bias": "LONG_BIAS",
-      "long_score": 0,
+      "long_score": 30,
       "short_score": 0,
-      "confidence_score": 0,
+      "confidence_score": 39,
       "confidence_label": "LOW",
-      "trap": "NO_TRAP",
-      "raw_trap": "NO_TRAP",
-      "sweep": "NO_SWEEP",
+      "trap": "POSSIBLE_LONG_TRAP",
+      "raw_trap": "POSSIBLE_LONG_TRAP",
+      "sweep": "LIQUIDITY_SWEEP_HIGH",
       "trigger": "NO_TRIGGER",
-      "rsi_5m": 58.9454,
+      "rsi_5m": 62.0279,
       "rsi_filter": {
         "period": 14,
         "overbought": 70,
@@ -1315,7 +1426,47 @@
         "short_allowed": true,
         "continuation_long_lane_allowed": true,
         "continuation_short_lane_allowed": true,
-        "continuation_override": null
+        "continuation_override": {
+          "enabled": true,
+          "applicable": false,
+          "allowed": false,
+          "side": "LONG",
+          "setup_type": "REVERSAL",
+          "rsi_5m": 62.0279,
+          "standard_overbought": 70,
+          "standard_oversold": 30,
+          "hard_ceiling": 78,
+          "hard_floor": 22,
+          "reason": null,
+          "checks": {}
+        }
+      },
+      "rsi_signal_guard": {
+        "enabled": true,
+        "long_block_above": 70,
+        "short_block_below": 34,
+        "blocked": false,
+        "blocked_side": null,
+        "reason": null
+      },
+      "supertrend_signal_guard": {
+        "enabled": true,
+        "required_timeframes": [
+          "1m",
+          "3m",
+          "5m"
+        ],
+        "require_all": true,
+        "expected_direction": null,
+        "aligned": null,
+        "blocked": false,
+        "blocked_side": null,
+        "directions": {
+          "1m": "BULLISH",
+          "3m": "BULLISH",
+          "5m": "BULLISH"
+        },
+        "reason": null
       },
       "supertrend": {
         "atr_period": 10,
@@ -1324,17 +1475,17 @@
         "1m": {
           "direction": "BULLISH",
           "value": 1357.58,
-          "atr": 4.0649
+          "atr": 4.4081
         },
         "3m": {
           "direction": "BULLISH",
           "value": 1344.67,
-          "atr": 7.6759
+          "atr": 7.5273
         },
         "5m": {
           "direction": "BULLISH",
           "value": 1336.94,
-          "atr": 9.8797
+          "atr": 9.9573
         },
         "15m": {
           "direction": "BULLISH",
@@ -1348,33 +1499,33 @@
           "center": 1336.05,
           "low": 1335.52,
           "high": 1336.58,
-          "score": 4.9038,
+          "score": 4.8899,
           "touches": 1,
           "has_15m": false
         },
         "nearest_resistance": {
-          "center": 1363.5,
-          "low": 1362.95,
-          "high": 1364.05,
-          "score": 6.3491,
+          "center": 1369.8,
+          "low": 1369.25,
+          "high": 1370.35,
+          "score": 5.6559,
           "touches": 1,
           "has_15m": false
         },
         "broken_level": null,
         "next_resistance_after_break": {
-          "center": 1363.5,
-          "low": 1362.95,
-          "high": 1364.05,
-          "score": 6.3491
+          "center": 1369.8,
+          "low": 1369.25,
+          "high": 1370.35,
+          "score": 5.6559
         },
         "next_support_after_break": {
           "center": 1336.05,
           "low": 1335.52,
           "high": 1336.58,
-          "score": 4.9038
+          "score": 4.8899
         },
         "support_zones_count": 4,
-        "resistance_zones_count": 3
+        "resistance_zones_count": 2
       },
       "breakout_role": "CONTEXT",
       "fast_trend": {
@@ -1382,19 +1533,19 @@
         "confidence": "MEDIUM",
         "3m": {
           "direction": "DOWN",
-          "move_pct": -0.370777,
-          "slope_pct_per_bar": -0.074155,
-          "up_bars": 2,
-          "down_bars": 4,
-          "lower_highs": 3,
-          "lower_lows": 4,
-          "higher_highs": 2,
-          "higher_lows": 1
+          "move_pct": -0.304626,
+          "slope_pct_per_bar": -0.060925,
+          "up_bars": 3,
+          "down_bars": 3,
+          "lower_highs": 4,
+          "lower_lows": 3,
+          "higher_highs": 1,
+          "higher_lows": 2
         },
         "5m": {
           "direction": "NONE",
-          "move_pct": -0.324763,
-          "slope_pct_per_bar": -0.081191,
+          "move_pct": -0.084268,
+          "slope_pct_per_bar": -0.021067,
           "up_bars": 4,
           "down_bars": 1,
           "lower_highs": 2,
@@ -1406,42 +1557,59 @@
       "structure_location_first": {
         "enabled": true,
         "priority_side": null,
+        "ambiguous": false,
+        "dual_side_strength_gap": null,
         "selected": false,
-        "side": "NONE",
-        "diagnostic_side": "SHORT",
-        "pattern": "LOWER_HIGH",
-        "mode": "5m_REFERENCE_1M_REJECTION",
-        "eligible": false,
-        "confidence": 70,
+        "side": "LONG",
+        "pattern": "HIGHER_LOW",
+        "mode": "5m_REFERENCE_1M_RECLAIM",
+        "eligible": true,
+        "confidence": 75,
         "confirmation_count": 5,
         "required_confirmations": 4,
-        "reference_swing": 1369.8,
-        "impulse_extreme": 1356.74,
-        "pullback_extreme": 1363.33,
-        "rejection_move_pct": 0.151101,
+        "reference_swing": 1352.86,
+        "impulse_extreme": 1363.83,
+        "pullback_extreme": 1357.01,
+        "stop_anchor": 1357.01,
+        "impulse_pct": 0.810875,
+        "pullback_retrace_ratio": 0.621696,
+        "rejection_move_pct": 0.55416,
         "resumption_confirmed": true,
-        "near_dynamic_sr": true,
-        "order_flow_state": "BUY_PRESSURE",
+        "near_dynamic_sr": false,
+        "dynamic_sr_distance_pct": 1.5688,
+        "order_flow_state": "BALANCED",
+        "order_flow_aligned": false,
+        "order_flow_balanced": true,
+        "order_flow_opposing": false,
         "opposing_flow_absorption": false,
+        "orderbook_supportive": true,
         "triple_trend_conflict": false,
+        "opposing_trend_votes": 1,
+        "aligned_trend_votes": 2,
+        "dominant_trend_conflict": false,
+        "pullback_age_minutes": 4,
+        "fresh_pullback": true,
         "countertrend_status": "WITH_TREND_OR_MIXED",
         "countertrend_release_confirmed": true,
         "micro_structure_reversal_confirmed": false,
-        "micro_break_level": 1352.86,
+        "micro_break_level": 1364.66,
         "flow_exhaustion_confirmation": false,
-        "fast_trend_opposing": false,
-        "supertrend_5m_opposing": true,
-        "supertrend_15m_opposing": true,
+        "fast_trend_opposing": true,
+        "supertrend_5m_opposing": false,
+        "supertrend_15m_opposing": false,
+        "recent_favorable_liquidity_sweep": false,
+        "recent_favorable_liquidity_sweep_type": null,
+        "recent_favorable_liquidity_sweep_age_bars": null,
+        "recent_favorable_liquidity_sweep_level": null,
+        "recent_favorable_liquidity_sweep_source": null,
         "confirmations": [
-          "LOWER_HIGH below reference swing",
-          "impulse/pullback 0.953424% / 50% retrace",
-          "bearish rejection/resumption 0.151101%",
-          "pullback located at/near dynamic resistance",
-          "ASK-side book supportive"
+          "HIGHER_LOW above reference swing",
+          "impulse/pullback 0.810875% / 62% retrace",
+          "bullish reclaim/resumption 0.55416%",
+          "BALANCED flow accepted at higher-low reclaim",
+          "BID-side book supportive"
         ],
-        "missing": [
-          "flow not strongly opposing unless absorption"
-        ]
+        "missing": []
       },
       "capitulation_exhaustion_reversal": {
         "enabled": true,
@@ -1449,160 +1617,173 @@
         "stage": "NONE",
         "possible_short_trap": false,
         "eligible": false,
-        "confidence": 50,
+        "confidence": 45,
         "sweep_low": 1352.86,
         "reclaim_level": 1356.2421499999998,
-        "vertical_move_pct": 1.2237,
-        "rebound_pct": 0.621646,
-        "climax_volume_ratio": 2.0618,
+        "vertical_move_pct": 0.821805,
+        "rebound_pct": 0.862617,
+        "climax_volume_ratio": 2.0992,
         "climax_confirmed": true,
         "seller_exhaustion": true,
-        "order_flow_reversal": true,
-        "book_reversal": false,
+        "order_flow_reversal": false,
+        "book_reversal": true,
         "oi_supportive": false,
         "micro_recovery": true,
-        "entry_confirmation_count": 4,
+        "below_session_vwap_context_only": false,
+        "below_weekly_vwap_context_only": false,
+        "supertrend_15m_context_only": true,
+        "entry_confirmation_count": 5,
         "confirmations": [
-          "vertical sell acceleration",
           "volume climax",
+          "sweep low reclaimed / no fresh low",
           "selling pressure exhausting",
-          "order flow reversal",
+          "bid-side book reversal",
           "1m/3m micro recovery"
         ],
-        "missing": [
-          "low reclaim + no fresh low"
-        ],
+        "missing": [],
         "execution_mode": "WATCH_ONLY"
       },
       "impulse_break_continuation": {
         "enabled": true,
         "impulse_eligible": false,
-        "impulse_side": "NONE",
-        "diagnostic_side": "LONG",
-        "impulse_confidence": 30,
-        "primary_aligned_count": 2,
+        "impulse_side": null,
+        "impulse_confidence": 15,
+        "primary_aligned_count": 1,
         "structural_break_confirmed": false,
         "structural_break_source": "NONE",
         "dynamic_sr_break_confirmed": false,
         "micro_break_confirmed": false,
         "micro_break_level": null,
+        "required_confirmations": 4,
         "fast_trend_strong": false,
         "supertrend_5m_aligned": true,
         "session_vwap_aligned": true,
         "micro_aligned_count": 0,
-        "micro_neutral_count": 0,
-        "order_flow_strong": true,
+        "micro_neutral_count": 2,
+        "micro_structure_neutral_allowed": false,
+        "perfect_micro_alignment": false,
+        "order_flow_strong": false,
         "sampled_fast_strong": false,
+        "sampled_flow_alignment": "0/3",
+        "volume_substituted_by_order_flow": false,
+        "body_ratio": 0,
+        "body_confirmed": false,
         "anti_chase_extension_pct": null,
         "anti_chase_allowed": false,
+        "strong_extension_qualification": false,
         "first_barrier_min_r": 0.4,
+        "strong_15m_conflict": false,
+        "contrary_sweep_blocked": true,
+        "exact_trap_against": false,
+        "retest_bypassed": false,
+        "retest_bypassed_reason": null,
         "reasons": [
           "ST5 + Session VWAP aligned",
-          "directional order flow strong",
-          "strong order flow substitutes breakout volume"
+          "directional order book substitutes missing exact taker-flow confirmation"
         ],
         "missing": [
           "dynamic S/R breakout OR recent 1m micro-break",
           "fast trend STRONG",
           "3m/5m coherent or directional+neutral",
           "break body >= 45%",
-          "anti-chase <= 0.55%"
+          "anti-chase <= 0.55%",
+          "contrary sweep not reclaimed/held"
         ]
       },
       "fast_trend_continuation": {
         "active": false,
         "eligible": false,
-        "side": "SHORT",
-        "direction_source": "FAST_3M_PLUS_CLASSIC_5M",
-        "lane_state": "PRE_TRIGGER",
-        "structural_seed_ok": true,
-        "structural_seed_mode": "FAST_3M_PLUS_CLASSIC_5M",
-        "confirmations": 2,
+        "lane_state": "NO_SEED",
+        "side": "NONE",
+        "direction_source": "NONE",
+        "structural_seed_ok": false,
+        "structural_seed_mode": "NONE",
+        "confirmations": 0,
         "minimum_confirmations": 4,
-        "structure_3m_aligned": true,
-        "structure_5m_aligned": true,
-        "fast_structure_3m_aligned": true,
+        "structure_3m_aligned": false,
+        "structure_5m_aligned": false,
+        "fast_structure_3m_aligned": false,
         "fast_structure_5m_aligned": false,
-        "classic_structure_3m_aligned": true,
-        "classic_structure_5m_aligned": true,
+        "classic_structure_3m_aligned": false,
+        "classic_structure_5m_aligned": false,
         "fast_3m_strong": false,
         "early_breakout_seed": false,
         "early_breakout_flow_strong": false,
-        "volume_acceleration": 0.688308,
-        "fast_trend_aligned": true,
+        "volume_acceleration": 0.29804142751802426,
+        "fast_trend_aligned": false,
         "fast_trend_confidence": "MEDIUM",
-        "entry_mode": "PULLBACK_RESUMPTION",
-        "continuation_pattern_confirmed": true,
-        "pullback_detected": true,
-        "pullback_resume_confirmed": true,
-        "pullback_1m_detected": true,
-        "pullback_resume_1m_confirmed": true,
-        "pullback_retrace_pct": 0.773916,
-        "breakout_acceleration": {
-          "confirmed": false,
-          "side": "SHORT",
-          "reason": "no aligned confirmed structural breakout",
-          "breakout_aligned": false,
-          "volume_confirmed": false,
-          "body_confirmed": false,
-          "fake_break_risk": false,
-          "retest_status": "NONE",
-          "retest_bypassed_for_fast_lane": false,
-          "bars_since_breakout": null,
-          "strong_fast_trend": false,
-          "flexible_seed_ok": true,
-          "flexible_seed_mode": "FAST_3M_PLUS_CLASSIC_5M",
-          "fast3_strong": false,
-          "volume_acceleration": 0.688308,
-          "strong_directional_flow": false,
-          "level_hold_without_retest": false,
-          "micro_pause_confirmed": false,
-          "post_break_bars": 0,
-          "pause_range_vs_breakout": null,
-          "pause_body_ratio": null
-        },
-        "retest_required_for_fast_lane": false,
-        "session_vwap_aligned": false,
-        "supertrend_5m_aligned": false,
-        "order_flow_state": "BUY_PRESSURE",
-        "order_flow_available": true,
-        "order_flow_opposing": true,
-        "order_flow_acceptable": false,
-        "unresolved_contrary_sweep": true,
-        "contrary_trap_active": false,
-        "entry_blocked_by_sr": false,
-        "reasons": [
-          "FAST structural seed FAST_3M_PLUS_CLASSIC_5M",
-          "fast trend DOWN (MEDIUM)",
-          "real 1m pullback + resumption",
-          "Session VWAP context-only / not aligned",
-          "Supertrend 5m context-only / not aligned"
-        ],
-        "missing": [
-          "order flow unavailable/opposing",
-          "minimum 4 confirmations",
-          "unresolved contrary liquidity sweep"
-        ],
-        "supertrend_15m_context_only": true,
-        "weekly_vwap_context_only": true
-      },
-      "trend_validation": {
-        "side": "NONE",
-        "strongly_validated": false,
+        "entry_mode": "NONE",
+        "continuation_pattern_confirmed": false,
         "pullback_detected": false,
         "pullback_resume_confirmed": false,
         "pullback_1m_detected": false,
         "pullback_resume_1m_confirmed": false,
-        "pullback_15m_detected": false,
-        "pullback_resume_15m_confirmed": false,
         "pullback_retrace_pct": null,
-        "pullback_retrace_1m_pct": null,
-        "pullback_1m": null,
-        "pullback_15m": null,
+        "breakout_acceleration": {
+          "confirmed": false,
+          "side": "NONE",
+          "reason": "no FAST directional seed",
+          "retest_bypassed_for_fast_lane": false
+        },
+        "retest_required_for_fast_lane": false,
+        "session_vwap_aligned": false,
+        "supertrend_5m_aligned": false,
+        "order_flow_state": "BALANCED",
+        "order_flow_available": true,
+        "order_flow_opposing": false,
+        "order_flow_acceptable": true,
+        "unresolved_contrary_sweep": false,
+        "contrary_trap_active": false,
+        "entry_blocked_by_sr": false,
+        "reasons": [],
+        "missing": [
+          "no FAST seed — require fast 3m + overall fast trend + one of fast 5m / classic 5m / strong early breakout"
+        ],
+        "supertrend_15m_context_only": false,
+        "weekly_vwap_context_only": false
+      },
+      "trend_validation": {
+        "side": "LONG",
+        "strongly_validated": false,
+        "pullback_detected": true,
+        "pullback_resume_confirmed": true,
+        "pullback_1m_detected": true,
+        "pullback_resume_1m_confirmed": true,
+        "pullback_15m_detected": true,
+        "pullback_resume_15m_confirmed": false,
+        "pullback_retrace_pct": 0.560579,
+        "pullback_retrace_1m_pct": 0.560579,
+        "pullback_1m": {
+          "detected": true,
+          "resume_confirmed": true,
+          "retrace_pct": 0.560579,
+          "counter_bars": 2
+        },
+        "pullback_15m": {
+          "detected": true,
+          "resume_confirmed": false,
+          "direction": "LONG",
+          "impulse_pct": 5.4022,
+          "pullback_pct": 1.9404,
+          "retrace_ratio": 0.378589,
+          "impulse_start": 1308.92,
+          "impulse_extreme": 1379.63,
+          "pullback_extreme": 1352.86,
+          "bars_since_impulse_extreme": 2,
+          "lower_high_or_higher_low": true,
+          "flow_aligned": false,
+          "resume_move_1m_pct": 0.261029
+        },
         "adaptive_threshold_active": false,
         "required_confirmations": 4,
         "normal_required_confirmations": 4,
-        "reasons": [],
+        "reasons": [
+          "price aligned with Session VWAP",
+          "Supertrend 5m aligned",
+          "Supertrend 15m context-only aligned",
+          "order flow not opposing",
+          "1m pullback + resumption detected"
+        ],
         "conditions": {
           "trend_5m_aligned": false,
           "trend_15m_aligned": false,
@@ -1614,9 +1795,9 @@
           "effective_trend_15m_aligned": false,
           "fast_trend_direction": "DOWN",
           "fast_trend_confidence": "MEDIUM",
-          "session_vwap_aligned": false,
-          "supertrend_5m_aligned": false,
-          "supertrend_15m_aligned": false,
+          "session_vwap_aligned": true,
+          "supertrend_5m_aligned": true,
+          "supertrend_15m_aligned": true,
           "order_flow_available": true,
           "order_flow_opposing": false
         }
@@ -1626,6 +1807,7 @@
           "CONTEXT",
           "LIQUIDITY_TRAP",
           "STRUCTURE",
+          "IMPULSE_BREAK",
           "ORDER_FLOW",
           "ENTRY_QUALITY",
           "RISK_REWARD"
@@ -1641,73 +1823,77 @@
           "continuation_trend_15m_aligned": false,
           "effective_trend_5m_aligned": false,
           "effective_trend_15m_aligned": false,
-          "session_vwap_aligned": false,
-          "weekly_vwap_aligned": false,
+          "session_vwap_aligned": true,
+          "weekly_vwap_aligned": true,
           "both_vwaps_opposed": false,
           "strong_15m_conflict": false
         },
         "liquidity": {
-          "contrary_sweep_active": false,
-          "sweep_type": "NONE",
-          "sweep_level": null,
-          "age_bars": null,
+          "contrary_sweep_active": true,
+          "sweep_type": "LIQUIDITY_SWEEP_HIGH",
+          "sweep_level": 1364.66,
+          "age_bars": 0,
           "reclaim_confirmed": false,
           "hold_confirmed": false
         },
         "structure": {
-          "coherent_3m_5m": true,
+          "coherent_3m_5m": false,
           "both_3m_5m_opposed": false,
-          "direction_3m": "DOWN",
-          "direction_5m": "DOWN",
+          "direction_3m": "RANGE",
+          "direction_5m": "RANGE",
           "direction_15m": "RANGE"
         },
         "order_flow": {
-          "state": "BUY_PRESSURE",
+          "state": "BALANCED",
           "acceptable": true,
           "source_timeframe": "3m",
-          "taker_delta_ratio": 0.6299647535377979,
-          "trade_count": 535,
+          "taker_delta_ratio": -0.09310865191146882,
+          "trade_count": 707,
           "fallback_used": true,
           "unavailable_1m": true
         },
         "entry_quality": {
           "blocked_by_sr": false,
-          "nearest_level_distance_pct": null,
-          "threshold_pct": 0.35,
+          "nearest_level_distance_pct": 0.346059,
+          "threshold_pct": 0.08,
           "breakout_next_barrier": null,
           "breakout_next_barrier_overlap": false,
           "breakout_next_barrier_already_crossed": false
         },
         "warnings": [
-          "no directional candidate — LONG/SHORT score tie"
+          "5m trend not aligned",
+          "15m trend not aligned",
+          "high-volatility regime"
         ]
       },
       "continuation_conflict": {
         "active": false,
-        "order_flow": "BUY_PRESSURE",
+        "order_flow": "BALANCED",
         "supertrend_15m": "BULLISH",
-        "reasons": []
+        "reasons": [
+          "QUALITATIVE_VETO: recent SWEEP_HIGH not reclaimed/held — no immediate LONG"
+        ]
       },
       "breakout_confirmation": {
         "direction": "NONE",
         "confirmed": false,
-        "attempted": false,
-        "level": null,
-        "zone_low": null,
-        "zone_high": null,
-        "zone_score": null,
-        "level_type": null,
-        "volume_ratio": 1.309,
+        "attempted": true,
+        "level": 1363.5,
+        "zone_low": 1362.9546,
+        "zone_high": 1364.0454,
+        "zone_score": 6.3425,
+        "level_type": "RESISTANCE",
+        "volume_ratio": 0.584913,
         "volume_confirmed": false,
-        "body_ratio": 0.711864,
-        "body_confirmed": true,
+        "body_ratio": 0.211155,
+        "body_confirmed": false,
         "buffer_pct": 0.05,
-        "fake_break_risk": false,
+        "fake_break_risk": true,
         "trade_eligible": false,
         "breakout_bar_start_ms": null,
         "bars_since_breakout": null,
         "retest_required": true,
-        "retest_status": "NONE",
+        "retest_status": "FAILED_INITIAL_BREAK",
         "retest_confirmed": false,
         "retest_reentered": false,
         "retest_reclaimed": false,
@@ -1719,16 +1905,16 @@
         "required": 4,
         "normal_required": 4,
         "strong_from": 4,
-        "selected_side": "NONE",
-        "count": 0,
+        "selected_side": "LONG",
+        "count": 4,
         "quality": "NO_TRADE",
         "structure_confirmed": false,
-        "order_flow_confirmed": false,
+        "order_flow_confirmed": true,
         "category_gate_passed": false,
         "adaptive_threshold_active": false,
         "sampled_flow_confirmed": false,
         "sampled_flow_alignment": "0/3",
-        "sampled_flow_expected_direction": null,
+        "sampled_flow_expected_direction": "BUY",
         "sampled_flow_overall_direction": null,
         "sampled_flow_consensus_alignment": "0/3",
         "sampled_flow_matching_chunks": 0,
@@ -1736,21 +1922,30 @@
         "sampled_flow_balanced_chunks": 0,
         "sampled_flow_unknown_chunks": 0,
         "sampled_flow_chunk_directions": [],
-        "supertrend_5m_aligned": false,
-        "supertrend_15m_aligned": false,
-        "confirmations": [],
-        "missing": [
-          "no directional candidate — LONG/SHORT score tie"
+        "supertrend_1m_aligned": true,
+        "supertrend_3m_aligned": true,
+        "supertrend_5m_aligned": true,
+        "supertrend_1m_3m_5m_aligned": true,
+        "supertrend_15m_context_only": "BULLISH",
+        "confirmations": [
+          "price above Session VWAP",
+          "bid dominant order book",
+          "OI confirmation PRICE_UP_OI_UP",
+          "Supertrend 1m/3m/5m bullish"
         ],
-        "long_count": 2,
-        "short_count": 2
+        "missing": [
+          "3m/5m structure alignment or 15m pullback-resumption",
+          "taker delta alignment/coverage (2/3 complete windows; sampled 0/3)",
+          "15m structure alignment",
+          "mandatory structural confirmation",
+          "QUALITATIVE_VETO: recent SWEEP_HIGH not reclaimed/held — no immediate LONG"
+        ],
+        "long_count": 4,
+        "short_count": 0
       },
       "entry_zone": null,
       "current_distance_from_entry_pct": null,
       "stop": null,
-      "stop_basis": null,
-      "atr_5m": 9.8797,
-      "atr_floor_risk": null,
       "stop_distance_pct": null,
       "tp1": null,
       "tp2": null,
@@ -1761,52 +1956,74 @@
       "tp1_basis": null,
       "tp2_basis": null,
       "tp3_basis": null,
-      "tp_progression_valid": false,
+      "first_scalp_target": null,
       "first_structural_target": null,
       "structural_rr_next": null,
       "structural_rr_required": null,
-      "continuation_barrier_guard": null,
+      "required_rr_min": 1.5,
+      "preferred_rr": 1.5,
+      "rr_policy": "DYNAMIC_BY_SETUP__PREFERRED_1_50R",
       "expected_duration_minutes": null,
-      "scalp_classification": "NO_SETUP",
+      "scalp_classification": "WATCH_ONLY",
       "setup_missed": false,
-      "hard_veto": false,
+      "veto_reasons": [
+        "QUALITATIVE_VETO: recent SWEEP_HIGH not reclaimed/held — no immediate LONG",
+        "FIRST_STRUCTURAL_BARRIER_TOO_CLOSE_HARD: 0.027788R < 0.2R",
+        "classification NOT_SCALP",
+        "trigger not confirmed"
+      ],
+      "risk_warnings": [],
+      "continuation_barrier_guard": null,
+      "stop_basis": null,
+      "atr_floor_risk": null,
+      "tp_progression_valid": false,
+      "stop_loss_model": null,
+      "hard_veto": true,
       "supporting_factors": [
         "price above Weekly VWAP",
         "price above Session VWAP",
         "LONG_BIAS",
-        "BUY_PRESSURE",
-        "ASK_DOMINANT"
+        "BID_DOMINANT"
       ],
       "contradicting_factors": [
-        "setup in middle of evident range",
-        "high realized volatility"
+        "high realized volatility",
+        "5m trend not aligned",
+        "15m trend not aligned",
+        "high-volatility regime",
+        "QUALITATIVE_VETO: recent SWEEP_HIGH not reclaimed/held — no immediate LONG"
       ],
       "missing_confirmations": [
-        "directional LONG or SHORT candidate"
+        "WAIT_STRUCTURAL_BREAK",
+        "WAIT_LIQUIDITY_SWEEP_RELEASE",
+        "WAIT_DIRECTIONAL_FLOW"
       ],
-      "veto_reasons": [],
-      "hard_veto_reasons": [],
-      "generated_at": "2026-09-17T02:15:04.000Z",
-      "generated_at_ms": 1789611304000,
+      "hard_veto_reasons": [
+        "QUALITATIVE_VETO: recent SWEEP_HIGH not reclaimed/held — no immediate LONG",
+        "FIRST_STRUCTURAL_BARRIER_TOO_CLOSE_HARD: 0.027788R < 0.2R",
+        "classification NOT_SCALP",
+        "trigger not confirmed"
+      ],
+      "generated_at": "2026-09-17T02:20:04.000Z",
+      "generated_at_ms": 1789611604000,
       "data_quality": "OK",
       "order_flow": {
-        "state": "BUY_PRESSURE",
+        "state": "BALANCED",
         "source_timeframe": "3m",
-        "taker_delta_ratio": 0.6299647535377979,
-        "trade_count": 535,
+        "taker_delta_ratio": -0.09310865191146882,
+        "trade_count": 707,
         "fallback_used": true,
         "unavailable_1m": true,
         "divergence": null
       },
-      "orderbook_confirmation": "ASK_DOMINANT",
+      "orderbook_confirmation": "BID_DOMINANT",
       "liquidation_flow": "NO_SIGNIFICANT_LIQUIDATION",
       "liquidity_map": [
         {
           "name": "sr_resistance_zone",
           "price": 1379.63,
           "type": "RESISTANCE_ZONE",
-          "distance_pct": 1.348740514372615,
-          "strength": 11.259941574540395,
+          "distance_pct": 1.1066081361347901,
+          "strength": 11.284038135929832,
           "touches": 2,
           "zone_low": 1379.078148,
           "zone_high": 1380.1818520000002,
@@ -1816,8 +2033,8 @@
           "name": "sr_resistance_zone",
           "price": 1352,
           "type": "RESISTANCE_ZONE",
-          "distance_pct": -0.6809817302959709,
-          "strength": 11.05411626440064,
+          "distance_pct": -0.9182648970707863,
+          "strength": 11.087515818838469,
           "touches": 2,
           "zone_low": 1351.4592,
           "zone_high": 1352.5408,
@@ -1827,8 +2044,8 @@
           "name": "sr_support_zone",
           "price": 1328.68,
           "type": "SUPPORT_ZONE",
-          "distance_pct": -2.3940878738237026,
-          "strength": 9.394055818662629,
+          "distance_pct": -2.627278256982246,
+          "strength": 9.394968433484028,
           "touches": 2,
           "zone_low": 1328.1485280000002,
           "zone_high": 1329.211472,
@@ -1838,8 +2055,8 @@
           "name": "sr_resistance_zone",
           "price": 1347.845,
           "type": "RESISTANCE_ZONE",
-          "distance_pct": -0.9862114055257165,
-          "strength": 9.033429068527687,
+          "distance_pct": -1.222765347775423,
+          "strength": 9.029798856512873,
           "touches": 2,
           "zone_low": 1346.860862,
           "zone_high": 1348.829138,
@@ -1849,8 +2066,8 @@
           "name": "sr_support_zone",
           "price": 1284.35,
           "type": "SUPPORT_ZONE",
-          "distance_pct": -5.650605684397658,
-          "strength": 8.973497533936419,
+          "distance_pct": -5.876015917568688,
+          "strength": 8.98174676252438,
           "touches": 2,
           "zone_low": 1283.8362599999998,
           "zone_high": 1284.86374,
@@ -1860,8 +2077,8 @@
           "name": "sr_resistance_zone",
           "price": 1363.5,
           "type": "RESISTANCE_ZONE",
-          "distance_pct": 0.16381761149515395,
-          "strength": 6.34913581624501,
+          "distance_pct": -0.0754838662396562,
+          "strength": 6.342472524269825,
           "touches": 1,
           "zone_low": 1362.9546,
           "zone_high": 1364.0454,
@@ -1871,8 +2088,8 @@
           "name": "sr_support_zone",
           "price": 1304.1,
           "type": "SUPPORT_ZONE",
-          "distance_pct": -4.199754640886821,
-          "strength": 6.162650517816404,
+          "distance_pct": -4.428631103750014,
+          "strength": 6.148761628927515,
           "touches": 1,
           "zone_low": 1303.57836,
           "zone_high": 1304.6216399999998,
@@ -1882,8 +2099,8 @@
           "name": "sr_resistance_zone",
           "price": 1328.88,
           "type": "RESISTANCE_ZONE",
-          "distance_pct": -2.379395711357768,
-          "strength": 5.70831595818005,
+          "distance_pct": -2.612621195576492,
+          "strength": 5.705817693946038,
           "touches": 1,
           "zone_low": 1328.3484480000002,
           "zone_high": 1329.411552,
@@ -1893,8 +2110,8 @@
           "name": "sr_resistance_zone",
           "price": 1369.8,
           "type": "RESISTANCE_ZONE",
-          "distance_pct": 0.6266207291720116,
-          "strength": 5.669749076222394,
+          "distance_pct": 0.3862135680417378,
+          "strength": 5.655860187333506,
           "touches": 1,
           "zone_low": 1369.25208,
           "zone_high": 1370.34792,
@@ -1904,8 +2121,8 @@
           "name": "sr_resistance_zone",
           "price": 1326.44,
           "type": "RESISTANCE_ZONE",
-          "distance_pct": -2.558640093442144,
-          "strength": 5.657995746902682,
+          "distance_pct": -2.791437344726755,
+          "strength": 5.655017303421082,
           "touches": 1,
           "zone_low": 1325.909424,
           "zone_high": 1326.9705760000002,
@@ -1915,8 +2132,8 @@
           "name": "sr_support_zone",
           "price": 1336.05,
           "type": "SUPPORT_ZONE",
-          "distance_pct": -1.852681686954094,
-          "strength": 4.903755098711057,
+          "distance_pct": -2.0871655441800474,
+          "strength": 4.889866209822168,
           "touches": 1,
           "zone_low": 1335.51558,
           "zone_high": 1336.58442,
@@ -1924,33 +2141,33 @@
         },
         {
           "name": "vwap_session",
-          "price": 1355.2292429335516,
+          "price": 1355.5390647221568,
           "type": "LIQUIDITY_BELOW",
-          "distance_pct": -0.44375892118744265
+          "distance_pct": -0.6589034523127535
         },
         {
           "name": "vwap_weekly",
-          "price": 1195.003070762199,
+          "price": 1195.1447542071394,
           "type": "LIQUIDITY_BELOW",
-          "distance_pct": -12.214103685367405
+          "distance_pct": -12.413449744077488
         },
         {
           "name": "largest_bid_wall",
-          "price": 1358.84,
+          "price": 1364.01,
           "type": "ORDERBOOK_BID_LIQUIDITY",
-          "distance_pct": -0.17850977396108858
+          "distance_pct": -0.03810835965497583
         },
         {
           "name": "largest_ask_wall",
-          "price": 1360.07,
+          "price": 1365,
           "type": "ORDERBOOK_ASK_LIQUIDITY",
-          "distance_pct": -0.0881529747955967
+          "distance_pct": 0.03444409430353179
         }
       ],
       "data_context": {
-        "last_price": 1361.27,
-        "spread_bps": 0.073549151058857,
-        "realized_volatility_bps": 145.48748819866987
+        "last_price": 1364.53,
+        "spread_bps": 0.07328503849289983,
+        "realized_volatility_bps": 141.5392315391315
       },
       "raw_candidate_decision": "NO_TRADE",
       "effective_candidate_decision": "NO_TRADE",
@@ -1998,51 +2215,159 @@
   "scalping": {
     "strategy_version": "ZEC_SCALP_FINAL_V1_42_10_SUPERTREND_STRICT_1M3M5M_4CONF_40_2026-09-13",
     "decision": "NO_TRADE",
-    "setup_type": "NONE",
+    "setup_type": "STRUCTURE_PULLBACK_CONTINUATION",
     "lane_selection": {
-      "execution_setup_type": "NONE",
-      "watch_setup_type": null,
-      "output_setup_type": "NONE",
-      "execution_side": null,
-      "watch_side": null,
-      "output_side": null,
-      "mode": "FALLBACK",
-      "watch_overrides_execution_semantics": false,
-      "watch_geometry_source": null,
-      "watch_qualification_source": null,
+      "execution_setup_type": "REVERSAL",
+      "watch_setup_type": "STRUCTURE_PULLBACK_CONTINUATION",
+      "output_setup_type": "STRUCTURE_PULLBACK_CONTINUATION",
+      "execution_side": "LONG",
+      "watch_side": "LONG",
+      "output_side": "LONG",
+      "mode": "PRE_TRIGGER_WATCH",
+      "watch_overrides_execution_semantics": true,
+      "watch_geometry_source": "STRUCTURE",
+      "watch_qualification_source": "STRUCTURE_NATIVE_QUALIFIED_WATCH",
       "native_fast_pretrigger_qualified": false,
-      "native_structure_watch_qualified": false
+      "native_structure_watch_qualified": true
     },
-    "watch_geometry_source": null,
+    "watch_geometry_source": "STRUCTURE",
     "execution_ready": false,
     "setup_quality": "NO_TRADE",
-    "setup_status": "WAITING",
-    "setup_state": "NO_ACTIVE_SETUP",
-    "early_setup_detected": false,
-    "early_setup_state": "NONE",
-    "early_entry_state": "STANDARD",
+    "setup_status": "WATCHING",
+    "setup_state": "EARLY_LONG_WATCH",
+    "early_setup_detected": true,
+    "early_setup_state": "EARLY_LONG_WATCH",
+    "early_entry_state": "EARLY_LONG_WATCH",
     "early_entry_ready": false,
     "entry_ready": false,
-    "early_watch_qualified": false,
-    "watch_side": null,
-    "next_confirmation_price": null,
-    "watch_trigger_price": null,
+    "early_watch_qualified": true,
+    "watch_side": "LONG",
+    "next_confirmation_price": 1370.35,
+    "watch_trigger_price": 1370.35,
     "watch_trigger_semantics": "NEXT_CONFIRMATION_ONLY",
-    "watch_invalidation_price": null,
-    "early_entry_missing_conditions": [],
+    "watch_invalidation_price": 1357.01,
+    "early_entry_missing_conditions": [
+      "WAIT_STRUCTURAL_BREAK",
+      "WAIT_LIQUIDITY_SWEEP_RELEASE",
+      "WAIT_DIRECTIONAL_FLOW"
+    ],
+    "momentum_exhaustion_score": 0,
+    "momentum_phase": "HEALTHY",
+    "rsi_phase": "LONG_ACCELERATION_ZONE",
+    "macd_phase": "NEUTRAL",
+    "price_extension_score": 0,
+    "fast_trend_transition": "STABLE_DOWN",
+    "order_flow_transition": "BALANCED_TOWARD_SELL",
+    "late_entry_flag": false,
+    "early_entry_reasons": [
+      "STRUCTURAL_CONTEXT_VALID",
+      "RSI_HEALTHY_EARLY_ZONE",
+      "PRICE_NOT_OVEREXTENDED"
+    ],
+    "momentum_timing": {
+      "early_setup_detected": true,
+      "early_setup_state": "EARLY_LONG_WATCH",
+      "early_timing_signal_count": 1,
+      "early_transition_core_confirmed": true,
+      "early_timing_candidate": false,
+      "early_entry_state": "EARLY_LONG_WATCH",
+      "early_entry_ready": false,
+      "early_entry_reasons": [
+        "STRUCTURAL_CONTEXT_VALID",
+        "RSI_HEALTHY_EARLY_ZONE",
+        "PRICE_NOT_OVEREXTENDED"
+      ],
+      "momentum_exhaustion_score": 0,
+      "momentum_exhaustion_groups": [],
+      "momentum_exhaustion_reasons": [],
+      "momentum_phase": "HEALTHY",
+      "rsi_phase": "LONG_ACCELERATION_ZONE",
+      "macd_phase": "NEUTRAL",
+      "late_entry_flag": false,
+      "price_extension_high": false,
+      "quality_cap_required": false,
+      "wait_for_reset": false,
+      "fast_trend_transition": "STABLE_DOWN",
+      "order_flow_transition": "BALANCED_TOWARD_SELL",
+      "rsi": 62.0279,
+      "rsi_prev": 61.3871,
+      "rsi_prev2": 58.8052,
+      "rsi_slope": 0.640751,
+      "macd": {
+        "dif": 7.5569,
+        "dea": 8.1657,
+        "histogram": -0.608798,
+        "histogram_slope": -0.180111,
+        "histogram_acceleration": 0.104586,
+        "dif_slope": -0.33231,
+        "dea_slope": -0.152199,
+        "histogram_z": -1.4578,
+        "recent_cross_direction": "NONE"
+      },
+      "ema9_5m": 1362.22,
+      "atr_5m": 9.9573,
+      "distance_from_ema9_pct": 0.169699,
+      "distance_from_ema9_atr": 0.232159,
+      "distance_from_session_vwap_pct": 0.663274,
+      "distance_from_session_vwap_atr": 0.902949,
+      "distance_from_recent_impulse_origin_pct": 0.130618,
+      "move_last_3m_pct": 0.118214,
+      "move_last_5m_pct": 0.058705,
+      "move_atr_multiple": 0.178763,
+      "price_extension_score": 0,
+      "price_extension_phase": "LOW",
+      "order_flow_state": "BALANCED",
+      "order_flow_prev_state": "BUY_PRESSURE",
+      "order_flow_delta_ratio": -0.093109,
+      "order_flow_prev_delta_ratio": 0.435968,
+      "fast_trend_prev": "NONE",
+      "structural_context_valid": true,
+      "structural_context_potential": true,
+      "setup_type_context": "STRUCTURE_PULLBACK_CONTINUATION",
+      "entry_ready": false,
+      "pre_trigger_structure_candidate": true,
+      "pre_trigger_reasons": [
+        "STRUCTURE_LOCATION_PRE_TRIGGER"
+      ],
+      "pre_trigger_side": "LONG",
+      "timing_side": "SHORT",
+      "pre_trigger_timing_conflict": true,
+      "early_watch_block_reason": null,
+      "early_watch_side_conflict": {
+        "pre_trigger_side": "LONG",
+        "timing_side": "SHORT"
+      },
+      "timing_side_scores": {
+        "long": 1,
+        "short": 3
+      },
+      "timing_side_reasons": {
+        "long": [
+          "RSI_LONG_ACCELERATION"
+        ],
+        "short": [
+          "FAST_TREND_DIRECTION_DOWN",
+          "MACD_EARLY_BEARISH_ACCELERATION",
+          "FLOW_TRANSITION_TO_SELL"
+        ]
+      },
+      "early_setup_detection_mode": "PRE_TRIGGER_EARLY_SETUP",
+      "next_confirmation_price": 1370.35,
+      "watch_trigger_semantics": "NEXT_CONFIRMATION_ONLY"
+    },
     "setup_id": null,
     "regime": "HIGH_VOLATILITY",
     "regime_confidence": 70,
     "bias": "LONG_BIAS",
-    "long_score": 0,
+    "long_score": 30,
     "short_score": 0,
-    "confidence_score": 0,
+    "confidence_score": 39,
     "confidence_label": "LOW",
-    "trap": "NO_TRAP",
-    "raw_trap": "NO_TRAP",
-    "sweep": "NO_SWEEP",
+    "trap": "POSSIBLE_LONG_TRAP",
+    "raw_trap": "POSSIBLE_LONG_TRAP",
+    "sweep": "LIQUIDITY_SWEEP_HIGH",
     "trigger": "NO_TRIGGER",
-    "rsi_5m": 58.9454,
+    "rsi_5m": 62.0279,
     "rsi_filter": {
       "period": 14,
       "overbought": 70,
@@ -2051,7 +2376,47 @@
       "short_allowed": true,
       "continuation_long_lane_allowed": true,
       "continuation_short_lane_allowed": true,
-      "continuation_override": null
+      "continuation_override": {
+        "enabled": true,
+        "applicable": false,
+        "allowed": false,
+        "side": "LONG",
+        "setup_type": "REVERSAL",
+        "rsi_5m": 62.0279,
+        "standard_overbought": 70,
+        "standard_oversold": 30,
+        "hard_ceiling": 78,
+        "hard_floor": 22,
+        "reason": null,
+        "checks": {}
+      }
+    },
+    "rsi_signal_guard": {
+      "enabled": true,
+      "long_block_above": 70,
+      "short_block_below": 34,
+      "blocked": false,
+      "blocked_side": null,
+      "reason": null
+    },
+    "supertrend_signal_guard": {
+      "enabled": true,
+      "required_timeframes": [
+        "1m",
+        "3m",
+        "5m"
+      ],
+      "require_all": true,
+      "expected_direction": null,
+      "aligned": null,
+      "blocked": false,
+      "blocked_side": null,
+      "directions": {
+        "1m": "BULLISH",
+        "3m": "BULLISH",
+        "5m": "BULLISH"
+      },
+      "reason": null
     },
     "supertrend": {
       "atr_period": 10,
@@ -2060,17 +2425,17 @@
       "1m": {
         "direction": "BULLISH",
         "value": 1357.58,
-        "atr": 4.0649
+        "atr": 4.4081
       },
       "3m": {
         "direction": "BULLISH",
         "value": 1344.67,
-        "atr": 7.6759
+        "atr": 7.5273
       },
       "5m": {
         "direction": "BULLISH",
         "value": 1336.94,
-        "atr": 9.8797
+        "atr": 9.9573
       },
       "15m": {
         "direction": "BULLISH",
@@ -2084,33 +2449,33 @@
         "center": 1336.05,
         "low": 1335.52,
         "high": 1336.58,
-        "score": 4.9038,
+        "score": 4.8899,
         "touches": 1,
         "has_15m": false
       },
       "nearest_resistance": {
-        "center": 1363.5,
-        "low": 1362.95,
-        "high": 1364.05,
-        "score": 6.3491,
+        "center": 1369.8,
+        "low": 1369.25,
+        "high": 1370.35,
+        "score": 5.6559,
         "touches": 1,
         "has_15m": false
       },
       "broken_level": null,
       "next_resistance_after_break": {
-        "center": 1363.5,
-        "low": 1362.95,
-        "high": 1364.05,
-        "score": 6.3491
+        "center": 1369.8,
+        "low": 1369.25,
+        "high": 1370.35,
+        "score": 5.6559
       },
       "next_support_after_break": {
         "center": 1336.05,
         "low": 1335.52,
         "high": 1336.58,
-        "score": 4.9038
+        "score": 4.8899
       },
       "support_zones_count": 4,
-      "resistance_zones_count": 3
+      "resistance_zones_count": 2
     },
     "breakout_role": "CONTEXT",
     "fast_trend": {
@@ -2118,19 +2483,19 @@
       "confidence": "MEDIUM",
       "3m": {
         "direction": "DOWN",
-        "move_pct": -0.370777,
-        "slope_pct_per_bar": -0.074155,
-        "up_bars": 2,
-        "down_bars": 4,
-        "lower_highs": 3,
-        "lower_lows": 4,
-        "higher_highs": 2,
-        "higher_lows": 1
+        "move_pct": -0.304626,
+        "slope_pct_per_bar": -0.060925,
+        "up_bars": 3,
+        "down_bars": 3,
+        "lower_highs": 4,
+        "lower_lows": 3,
+        "higher_highs": 1,
+        "higher_lows": 2
       },
       "5m": {
         "direction": "NONE",
-        "move_pct": -0.324763,
-        "slope_pct_per_bar": -0.081191,
+        "move_pct": -0.084268,
+        "slope_pct_per_bar": -0.021067,
         "up_bars": 4,
         "down_bars": 1,
         "lower_highs": 2,
@@ -2142,42 +2507,59 @@
     "structure_location_first": {
       "enabled": true,
       "priority_side": null,
+      "ambiguous": false,
+      "dual_side_strength_gap": null,
       "selected": false,
-      "side": "NONE",
-      "diagnostic_side": "SHORT",
-      "pattern": "LOWER_HIGH",
-      "mode": "5m_REFERENCE_1M_REJECTION",
-      "eligible": false,
-      "confidence": 70,
+      "side": "LONG",
+      "pattern": "HIGHER_LOW",
+      "mode": "5m_REFERENCE_1M_RECLAIM",
+      "eligible": true,
+      "confidence": 75,
       "confirmation_count": 5,
       "required_confirmations": 4,
-      "reference_swing": 1369.8,
-      "impulse_extreme": 1356.74,
-      "pullback_extreme": 1363.33,
-      "rejection_move_pct": 0.151101,
+      "reference_swing": 1352.86,
+      "impulse_extreme": 1363.83,
+      "pullback_extreme": 1357.01,
+      "stop_anchor": 1357.01,
+      "impulse_pct": 0.810875,
+      "pullback_retrace_ratio": 0.621696,
+      "rejection_move_pct": 0.55416,
       "resumption_confirmed": true,
-      "near_dynamic_sr": true,
-      "order_flow_state": "BUY_PRESSURE",
+      "near_dynamic_sr": false,
+      "dynamic_sr_distance_pct": 1.5688,
+      "order_flow_state": "BALANCED",
+      "order_flow_aligned": false,
+      "order_flow_balanced": true,
+      "order_flow_opposing": false,
       "opposing_flow_absorption": false,
+      "orderbook_supportive": true,
       "triple_trend_conflict": false,
+      "opposing_trend_votes": 1,
+      "aligned_trend_votes": 2,
+      "dominant_trend_conflict": false,
+      "pullback_age_minutes": 4,
+      "fresh_pullback": true,
       "countertrend_status": "WITH_TREND_OR_MIXED",
       "countertrend_release_confirmed": true,
       "micro_structure_reversal_confirmed": false,
-      "micro_break_level": 1352.86,
+      "micro_break_level": 1364.66,
       "flow_exhaustion_confirmation": false,
-      "fast_trend_opposing": false,
-      "supertrend_5m_opposing": true,
-      "supertrend_15m_opposing": true,
+      "fast_trend_opposing": true,
+      "supertrend_5m_opposing": false,
+      "supertrend_15m_opposing": false,
+      "recent_favorable_liquidity_sweep": false,
+      "recent_favorable_liquidity_sweep_type": null,
+      "recent_favorable_liquidity_sweep_age_bars": null,
+      "recent_favorable_liquidity_sweep_level": null,
+      "recent_favorable_liquidity_sweep_source": null,
       "confirmations": [
-        "LOWER_HIGH below reference swing",
-        "impulse/pullback 0.953424% / 50% retrace",
-        "bearish rejection/resumption 0.151101%",
-        "pullback located at/near dynamic resistance",
-        "ASK-side book supportive"
+        "HIGHER_LOW above reference swing",
+        "impulse/pullback 0.810875% / 62% retrace",
+        "bullish reclaim/resumption 0.55416%",
+        "BALANCED flow accepted at higher-low reclaim",
+        "BID-side book supportive"
       ],
-      "missing": [
-        "flow not strongly opposing unless absorption"
-      ]
+      "missing": []
     },
     "capitulation_exhaustion_reversal": {
       "enabled": true,
@@ -2185,160 +2567,173 @@
       "stage": "NONE",
       "possible_short_trap": false,
       "eligible": false,
-      "confidence": 50,
+      "confidence": 45,
       "sweep_low": 1352.86,
       "reclaim_level": 1356.2421499999998,
-      "vertical_move_pct": 1.2237,
-      "rebound_pct": 0.621646,
-      "climax_volume_ratio": 2.0618,
+      "vertical_move_pct": 0.821805,
+      "rebound_pct": 0.862617,
+      "climax_volume_ratio": 2.0992,
       "climax_confirmed": true,
       "seller_exhaustion": true,
-      "order_flow_reversal": true,
-      "book_reversal": false,
+      "order_flow_reversal": false,
+      "book_reversal": true,
       "oi_supportive": false,
       "micro_recovery": true,
-      "entry_confirmation_count": 4,
+      "below_session_vwap_context_only": false,
+      "below_weekly_vwap_context_only": false,
+      "supertrend_15m_context_only": true,
+      "entry_confirmation_count": 5,
       "confirmations": [
-        "vertical sell acceleration",
         "volume climax",
+        "sweep low reclaimed / no fresh low",
         "selling pressure exhausting",
-        "order flow reversal",
+        "bid-side book reversal",
         "1m/3m micro recovery"
       ],
-      "missing": [
-        "low reclaim + no fresh low"
-      ],
+      "missing": [],
       "execution_mode": "WATCH_ONLY"
     },
     "impulse_break_continuation": {
       "enabled": true,
       "impulse_eligible": false,
-      "impulse_side": "NONE",
-      "diagnostic_side": "LONG",
-      "impulse_confidence": 30,
-      "primary_aligned_count": 2,
+      "impulse_side": null,
+      "impulse_confidence": 15,
+      "primary_aligned_count": 1,
       "structural_break_confirmed": false,
       "structural_break_source": "NONE",
       "dynamic_sr_break_confirmed": false,
       "micro_break_confirmed": false,
       "micro_break_level": null,
+      "required_confirmations": 4,
       "fast_trend_strong": false,
       "supertrend_5m_aligned": true,
       "session_vwap_aligned": true,
       "micro_aligned_count": 0,
-      "micro_neutral_count": 0,
-      "order_flow_strong": true,
+      "micro_neutral_count": 2,
+      "micro_structure_neutral_allowed": false,
+      "perfect_micro_alignment": false,
+      "order_flow_strong": false,
       "sampled_fast_strong": false,
+      "sampled_flow_alignment": "0/3",
+      "volume_substituted_by_order_flow": false,
+      "body_ratio": 0,
+      "body_confirmed": false,
       "anti_chase_extension_pct": null,
       "anti_chase_allowed": false,
+      "strong_extension_qualification": false,
       "first_barrier_min_r": 0.4,
+      "strong_15m_conflict": false,
+      "contrary_sweep_blocked": true,
+      "exact_trap_against": false,
+      "retest_bypassed": false,
+      "retest_bypassed_reason": null,
       "reasons": [
         "ST5 + Session VWAP aligned",
-        "directional order flow strong",
-        "strong order flow substitutes breakout volume"
+        "directional order book substitutes missing exact taker-flow confirmation"
       ],
       "missing": [
         "dynamic S/R breakout OR recent 1m micro-break",
         "fast trend STRONG",
         "3m/5m coherent or directional+neutral",
         "break body >= 45%",
-        "anti-chase <= 0.55%"
+        "anti-chase <= 0.55%",
+        "contrary sweep not reclaimed/held"
       ]
     },
     "fast_trend_continuation": {
       "active": false,
       "eligible": false,
-      "side": "SHORT",
-      "direction_source": "FAST_3M_PLUS_CLASSIC_5M",
-      "lane_state": "PRE_TRIGGER",
-      "structural_seed_ok": true,
-      "structural_seed_mode": "FAST_3M_PLUS_CLASSIC_5M",
-      "confirmations": 2,
+      "lane_state": "NO_SEED",
+      "side": "NONE",
+      "direction_source": "NONE",
+      "structural_seed_ok": false,
+      "structural_seed_mode": "NONE",
+      "confirmations": 0,
       "minimum_confirmations": 4,
-      "structure_3m_aligned": true,
-      "structure_5m_aligned": true,
-      "fast_structure_3m_aligned": true,
+      "structure_3m_aligned": false,
+      "structure_5m_aligned": false,
+      "fast_structure_3m_aligned": false,
       "fast_structure_5m_aligned": false,
-      "classic_structure_3m_aligned": true,
-      "classic_structure_5m_aligned": true,
+      "classic_structure_3m_aligned": false,
+      "classic_structure_5m_aligned": false,
       "fast_3m_strong": false,
       "early_breakout_seed": false,
       "early_breakout_flow_strong": false,
-      "volume_acceleration": 0.688308,
-      "fast_trend_aligned": true,
+      "volume_acceleration": 0.29804142751802426,
+      "fast_trend_aligned": false,
       "fast_trend_confidence": "MEDIUM",
-      "entry_mode": "PULLBACK_RESUMPTION",
-      "continuation_pattern_confirmed": true,
-      "pullback_detected": true,
-      "pullback_resume_confirmed": true,
-      "pullback_1m_detected": true,
-      "pullback_resume_1m_confirmed": true,
-      "pullback_retrace_pct": 0.773916,
-      "breakout_acceleration": {
-        "confirmed": false,
-        "side": "SHORT",
-        "reason": "no aligned confirmed structural breakout",
-        "breakout_aligned": false,
-        "volume_confirmed": false,
-        "body_confirmed": false,
-        "fake_break_risk": false,
-        "retest_status": "NONE",
-        "retest_bypassed_for_fast_lane": false,
-        "bars_since_breakout": null,
-        "strong_fast_trend": false,
-        "flexible_seed_ok": true,
-        "flexible_seed_mode": "FAST_3M_PLUS_CLASSIC_5M",
-        "fast3_strong": false,
-        "volume_acceleration": 0.688308,
-        "strong_directional_flow": false,
-        "level_hold_without_retest": false,
-        "micro_pause_confirmed": false,
-        "post_break_bars": 0,
-        "pause_range_vs_breakout": null,
-        "pause_body_ratio": null
-      },
-      "retest_required_for_fast_lane": false,
-      "session_vwap_aligned": false,
-      "supertrend_5m_aligned": false,
-      "order_flow_state": "BUY_PRESSURE",
-      "order_flow_available": true,
-      "order_flow_opposing": true,
-      "order_flow_acceptable": false,
-      "unresolved_contrary_sweep": true,
-      "contrary_trap_active": false,
-      "entry_blocked_by_sr": false,
-      "reasons": [
-        "FAST structural seed FAST_3M_PLUS_CLASSIC_5M",
-        "fast trend DOWN (MEDIUM)",
-        "real 1m pullback + resumption",
-        "Session VWAP context-only / not aligned",
-        "Supertrend 5m context-only / not aligned"
-      ],
-      "missing": [
-        "order flow unavailable/opposing",
-        "minimum 4 confirmations",
-        "unresolved contrary liquidity sweep"
-      ],
-      "supertrend_15m_context_only": true,
-      "weekly_vwap_context_only": true
-    },
-    "trend_validation": {
-      "side": "NONE",
-      "strongly_validated": false,
+      "entry_mode": "NONE",
+      "continuation_pattern_confirmed": false,
       "pullback_detected": false,
       "pullback_resume_confirmed": false,
       "pullback_1m_detected": false,
       "pullback_resume_1m_confirmed": false,
-      "pullback_15m_detected": false,
-      "pullback_resume_15m_confirmed": false,
       "pullback_retrace_pct": null,
-      "pullback_retrace_1m_pct": null,
-      "pullback_1m": null,
-      "pullback_15m": null,
+      "breakout_acceleration": {
+        "confirmed": false,
+        "side": "NONE",
+        "reason": "no FAST directional seed",
+        "retest_bypassed_for_fast_lane": false
+      },
+      "retest_required_for_fast_lane": false,
+      "session_vwap_aligned": false,
+      "supertrend_5m_aligned": false,
+      "order_flow_state": "BALANCED",
+      "order_flow_available": true,
+      "order_flow_opposing": false,
+      "order_flow_acceptable": true,
+      "unresolved_contrary_sweep": false,
+      "contrary_trap_active": false,
+      "entry_blocked_by_sr": false,
+      "reasons": [],
+      "missing": [
+        "no FAST seed — require fast 3m + overall fast trend + one of fast 5m / classic 5m / strong early breakout"
+      ],
+      "supertrend_15m_context_only": false,
+      "weekly_vwap_context_only": false
+    },
+    "trend_validation": {
+      "side": "LONG",
+      "strongly_validated": false,
+      "pullback_detected": true,
+      "pullback_resume_confirmed": true,
+      "pullback_1m_detected": true,
+      "pullback_resume_1m_confirmed": true,
+      "pullback_15m_detected": true,
+      "pullback_resume_15m_confirmed": false,
+      "pullback_retrace_pct": 0.560579,
+      "pullback_retrace_1m_pct": 0.560579,
+      "pullback_1m": {
+        "detected": true,
+        "resume_confirmed": true,
+        "retrace_pct": 0.560579,
+        "counter_bars": 2
+      },
+      "pullback_15m": {
+        "detected": true,
+        "resume_confirmed": false,
+        "direction": "LONG",
+        "impulse_pct": 5.4022,
+        "pullback_pct": 1.9404,
+        "retrace_ratio": 0.378589,
+        "impulse_start": 1308.92,
+        "impulse_extreme": 1379.63,
+        "pullback_extreme": 1352.86,
+        "bars_since_impulse_extreme": 2,
+        "lower_high_or_higher_low": true,
+        "flow_aligned": false,
+        "resume_move_1m_pct": 0.261029
+      },
       "adaptive_threshold_active": false,
       "required_confirmations": 4,
       "normal_required_confirmations": 4,
-      "reasons": [],
+      "reasons": [
+        "price aligned with Session VWAP",
+        "Supertrend 5m aligned",
+        "Supertrend 15m context-only aligned",
+        "order flow not opposing",
+        "1m pullback + resumption detected"
+      ],
       "conditions": {
         "trend_5m_aligned": false,
         "trend_15m_aligned": false,
@@ -2350,9 +2745,9 @@
         "effective_trend_15m_aligned": false,
         "fast_trend_direction": "DOWN",
         "fast_trend_confidence": "MEDIUM",
-        "session_vwap_aligned": false,
-        "supertrend_5m_aligned": false,
-        "supertrend_15m_aligned": false,
+        "session_vwap_aligned": true,
+        "supertrend_5m_aligned": true,
+        "supertrend_15m_aligned": true,
         "order_flow_available": true,
         "order_flow_opposing": false
       }
@@ -2362,6 +2757,7 @@
         "CONTEXT",
         "LIQUIDITY_TRAP",
         "STRUCTURE",
+        "IMPULSE_BREAK",
         "ORDER_FLOW",
         "ENTRY_QUALITY",
         "RISK_REWARD"
@@ -2377,73 +2773,77 @@
         "continuation_trend_15m_aligned": false,
         "effective_trend_5m_aligned": false,
         "effective_trend_15m_aligned": false,
-        "session_vwap_aligned": false,
-        "weekly_vwap_aligned": false,
+        "session_vwap_aligned": true,
+        "weekly_vwap_aligned": true,
         "both_vwaps_opposed": false,
         "strong_15m_conflict": false
       },
       "liquidity": {
-        "contrary_sweep_active": false,
-        "sweep_type": "NONE",
-        "sweep_level": null,
-        "age_bars": null,
+        "contrary_sweep_active": true,
+        "sweep_type": "LIQUIDITY_SWEEP_HIGH",
+        "sweep_level": 1364.66,
+        "age_bars": 0,
         "reclaim_confirmed": false,
         "hold_confirmed": false
       },
       "structure": {
-        "coherent_3m_5m": true,
+        "coherent_3m_5m": false,
         "both_3m_5m_opposed": false,
-        "direction_3m": "DOWN",
-        "direction_5m": "DOWN",
+        "direction_3m": "RANGE",
+        "direction_5m": "RANGE",
         "direction_15m": "RANGE"
       },
       "order_flow": {
-        "state": "BUY_PRESSURE",
+        "state": "BALANCED",
         "acceptable": true,
         "source_timeframe": "3m",
-        "taker_delta_ratio": 0.6299647535377979,
-        "trade_count": 535,
+        "taker_delta_ratio": -0.09310865191146882,
+        "trade_count": 707,
         "fallback_used": true,
         "unavailable_1m": true
       },
       "entry_quality": {
         "blocked_by_sr": false,
-        "nearest_level_distance_pct": null,
-        "threshold_pct": 0.35,
+        "nearest_level_distance_pct": 0.346059,
+        "threshold_pct": 0.08,
         "breakout_next_barrier": null,
         "breakout_next_barrier_overlap": false,
         "breakout_next_barrier_already_crossed": false
       },
       "warnings": [
-        "no directional candidate — LONG/SHORT score tie"
+        "5m trend not aligned",
+        "15m trend not aligned",
+        "high-volatility regime"
       ]
     },
     "continuation_conflict": {
       "active": false,
-      "order_flow": "BUY_PRESSURE",
+      "order_flow": "BALANCED",
       "supertrend_15m": "BULLISH",
-      "reasons": []
+      "reasons": [
+        "QUALITATIVE_VETO: recent SWEEP_HIGH not reclaimed/held — no immediate LONG"
+      ]
     },
     "breakout_confirmation": {
       "direction": "NONE",
       "confirmed": false,
-      "attempted": false,
-      "level": null,
-      "zone_low": null,
-      "zone_high": null,
-      "zone_score": null,
-      "level_type": null,
-      "volume_ratio": 1.309,
+      "attempted": true,
+      "level": 1363.5,
+      "zone_low": 1362.9546,
+      "zone_high": 1364.0454,
+      "zone_score": 6.3425,
+      "level_type": "RESISTANCE",
+      "volume_ratio": 0.584913,
       "volume_confirmed": false,
-      "body_ratio": 0.711864,
-      "body_confirmed": true,
+      "body_ratio": 0.211155,
+      "body_confirmed": false,
       "buffer_pct": 0.05,
-      "fake_break_risk": false,
+      "fake_break_risk": true,
       "trade_eligible": false,
       "breakout_bar_start_ms": null,
       "bars_since_breakout": null,
       "retest_required": true,
-      "retest_status": "NONE",
+      "retest_status": "FAILED_INITIAL_BREAK",
       "retest_confirmed": false,
       "retest_reentered": false,
       "retest_reclaimed": false,
@@ -2455,16 +2855,16 @@
       "required": 4,
       "normal_required": 4,
       "strong_from": 4,
-      "selected_side": "NONE",
-      "count": 0,
+      "selected_side": "LONG",
+      "count": 4,
       "quality": "NO_TRADE",
       "structure_confirmed": false,
-      "order_flow_confirmed": false,
+      "order_flow_confirmed": true,
       "category_gate_passed": false,
       "adaptive_threshold_active": false,
       "sampled_flow_confirmed": false,
       "sampled_flow_alignment": "0/3",
-      "sampled_flow_expected_direction": null,
+      "sampled_flow_expected_direction": "BUY",
       "sampled_flow_overall_direction": null,
       "sampled_flow_consensus_alignment": "0/3",
       "sampled_flow_matching_chunks": 0,
@@ -2472,21 +2872,30 @@
       "sampled_flow_balanced_chunks": 0,
       "sampled_flow_unknown_chunks": 0,
       "sampled_flow_chunk_directions": [],
-      "supertrend_5m_aligned": false,
-      "supertrend_15m_aligned": false,
-      "confirmations": [],
-      "missing": [
-        "no directional candidate — LONG/SHORT score tie"
+      "supertrend_1m_aligned": true,
+      "supertrend_3m_aligned": true,
+      "supertrend_5m_aligned": true,
+      "supertrend_1m_3m_5m_aligned": true,
+      "supertrend_15m_context_only": "BULLISH",
+      "confirmations": [
+        "price above Session VWAP",
+        "bid dominant order book",
+        "OI confirmation PRICE_UP_OI_UP",
+        "Supertrend 1m/3m/5m bullish"
       ],
-      "long_count": 2,
-      "short_count": 2
+      "missing": [
+        "3m/5m structure alignment or 15m pullback-resumption",
+        "taker delta alignment/coverage (2/3 complete windows; sampled 0/3)",
+        "15m structure alignment",
+        "mandatory structural confirmation",
+        "QUALITATIVE_VETO: recent SWEEP_HIGH not reclaimed/held — no immediate LONG"
+      ],
+      "long_count": 4,
+      "short_count": 0
     },
     "entry_zone": null,
     "current_distance_from_entry_pct": null,
     "stop": null,
-    "stop_basis": null,
-    "atr_5m": 9.8797,
-    "atr_floor_risk": null,
     "stop_distance_pct": null,
     "tp1": null,
     "tp2": null,
@@ -2497,52 +2906,74 @@
     "tp1_basis": null,
     "tp2_basis": null,
     "tp3_basis": null,
-    "tp_progression_valid": false,
+    "first_scalp_target": null,
     "first_structural_target": null,
     "structural_rr_next": null,
     "structural_rr_required": null,
-    "continuation_barrier_guard": null,
+    "required_rr_min": 1.5,
+    "preferred_rr": 1.5,
+    "rr_policy": "DYNAMIC_BY_SETUP__PREFERRED_1_50R",
     "expected_duration_minutes": null,
-    "scalp_classification": "NO_SETUP",
+    "scalp_classification": "WATCH_ONLY",
     "setup_missed": false,
-    "hard_veto": false,
+    "veto_reasons": [
+      "QUALITATIVE_VETO: recent SWEEP_HIGH not reclaimed/held — no immediate LONG",
+      "FIRST_STRUCTURAL_BARRIER_TOO_CLOSE_HARD: 0.027788R < 0.2R",
+      "classification NOT_SCALP",
+      "trigger not confirmed"
+    ],
+    "risk_warnings": [],
+    "continuation_barrier_guard": null,
+    "stop_basis": null,
+    "atr_floor_risk": null,
+    "tp_progression_valid": false,
+    "stop_loss_model": null,
+    "hard_veto": true,
     "supporting_factors": [
       "price above Weekly VWAP",
       "price above Session VWAP",
       "LONG_BIAS",
-      "BUY_PRESSURE",
-      "ASK_DOMINANT"
+      "BID_DOMINANT"
     ],
     "contradicting_factors": [
-      "setup in middle of evident range",
-      "high realized volatility"
+      "high realized volatility",
+      "5m trend not aligned",
+      "15m trend not aligned",
+      "high-volatility regime",
+      "QUALITATIVE_VETO: recent SWEEP_HIGH not reclaimed/held — no immediate LONG"
     ],
     "missing_confirmations": [
-      "directional LONG or SHORT candidate"
+      "WAIT_STRUCTURAL_BREAK",
+      "WAIT_LIQUIDITY_SWEEP_RELEASE",
+      "WAIT_DIRECTIONAL_FLOW"
     ],
-    "veto_reasons": [],
-    "hard_veto_reasons": [],
-    "generated_at": "2026-09-17T02:15:04.000Z",
-    "generated_at_ms": 1789611304000,
+    "hard_veto_reasons": [
+      "QUALITATIVE_VETO: recent SWEEP_HIGH not reclaimed/held — no immediate LONG",
+      "FIRST_STRUCTURAL_BARRIER_TOO_CLOSE_HARD: 0.027788R < 0.2R",
+      "classification NOT_SCALP",
+      "trigger not confirmed"
+    ],
+    "generated_at": "2026-09-17T02:20:04.000Z",
+    "generated_at_ms": 1789611604000,
     "data_quality": "OK",
     "order_flow": {
-      "state": "BUY_PRESSURE",
+      "state": "BALANCED",
       "source_timeframe": "3m",
-      "taker_delta_ratio": 0.6299647535377979,
-      "trade_count": 535,
+      "taker_delta_ratio": -0.09310865191146882,
+      "trade_count": 707,
       "fallback_used": true,
       "unavailable_1m": true,
       "divergence": null
     },
-    "orderbook_confirmation": "ASK_DOMINANT",
+    "orderbook_confirmation": "BID_DOMINANT",
     "liquidation_flow": "NO_SIGNIFICANT_LIQUIDATION",
     "liquidity_map": [
       {
         "name": "sr_resistance_zone",
         "price": 1379.63,
         "type": "RESISTANCE_ZONE",
-        "distance_pct": 1.348740514372615,
-        "strength": 11.259941574540395,
+        "distance_pct": 1.1066081361347901,
+        "strength": 11.284038135929832,
         "touches": 2,
         "zone_low": 1379.078148,
         "zone_high": 1380.1818520000002,
@@ -2552,8 +2983,8 @@
         "name": "sr_resistance_zone",
         "price": 1352,
         "type": "RESISTANCE_ZONE",
-        "distance_pct": -0.6809817302959709,
-        "strength": 11.05411626440064,
+        "distance_pct": -0.9182648970707863,
+        "strength": 11.087515818838469,
         "touches": 2,
         "zone_low": 1351.4592,
         "zone_high": 1352.5408,
@@ -2563,8 +2994,8 @@
         "name": "sr_support_zone",
         "price": 1328.68,
         "type": "SUPPORT_ZONE",
-        "distance_pct": -2.3940878738237026,
-        "strength": 9.394055818662629,
+        "distance_pct": -2.627278256982246,
+        "strength": 9.394968433484028,
         "touches": 2,
         "zone_low": 1328.1485280000002,
         "zone_high": 1329.211472,
@@ -2574,8 +3005,8 @@
         "name": "sr_resistance_zone",
         "price": 1347.845,
         "type": "RESISTANCE_ZONE",
-        "distance_pct": -0.9862114055257165,
-        "strength": 9.033429068527687,
+        "distance_pct": -1.222765347775423,
+        "strength": 9.029798856512873,
         "touches": 2,
         "zone_low": 1346.860862,
         "zone_high": 1348.829138,
@@ -2585,8 +3016,8 @@
         "name": "sr_support_zone",
         "price": 1284.35,
         "type": "SUPPORT_ZONE",
-        "distance_pct": -5.650605684397658,
-        "strength": 8.973497533936419,
+        "distance_pct": -5.876015917568688,
+        "strength": 8.98174676252438,
         "touches": 2,
         "zone_low": 1283.8362599999998,
         "zone_high": 1284.86374,
@@ -2596,8 +3027,8 @@
         "name": "sr_resistance_zone",
         "price": 1363.5,
         "type": "RESISTANCE_ZONE",
-        "distance_pct": 0.16381761149515395,
-        "strength": 6.34913581624501,
+        "distance_pct": -0.0754838662396562,
+        "strength": 6.342472524269825,
         "touches": 1,
         "zone_low": 1362.9546,
         "zone_high": 1364.0454,
@@ -2607,8 +3038,8 @@
         "name": "sr_support_zone",
         "price": 1304.1,
         "type": "SUPPORT_ZONE",
-        "distance_pct": -4.199754640886821,
-        "strength": 6.162650517816404,
+        "distance_pct": -4.428631103750014,
+        "strength": 6.148761628927515,
         "touches": 1,
         "zone_low": 1303.57836,
         "zone_high": 1304.6216399999998,
@@ -2618,8 +3049,8 @@
         "name": "sr_resistance_zone",
         "price": 1328.88,
         "type": "RESISTANCE_ZONE",
-        "distance_pct": -2.379395711357768,
-        "strength": 5.70831595818005,
+        "distance_pct": -2.612621195576492,
+        "strength": 5.705817693946038,
         "touches": 1,
         "zone_low": 1328.3484480000002,
         "zone_high": 1329.411552,
@@ -2629,8 +3060,8 @@
         "name": "sr_resistance_zone",
         "price": 1369.8,
         "type": "RESISTANCE_ZONE",
-        "distance_pct": 0.6266207291720116,
-        "strength": 5.669749076222394,
+        "distance_pct": 0.3862135680417378,
+        "strength": 5.655860187333506,
         "touches": 1,
         "zone_low": 1369.25208,
         "zone_high": 1370.34792,
@@ -2640,8 +3071,8 @@
         "name": "sr_resistance_zone",
         "price": 1326.44,
         "type": "RESISTANCE_ZONE",
-        "distance_pct": -2.558640093442144,
-        "strength": 5.657995746902682,
+        "distance_pct": -2.791437344726755,
+        "strength": 5.655017303421082,
         "touches": 1,
         "zone_low": 1325.909424,
         "zone_high": 1326.9705760000002,
@@ -2651,8 +3082,8 @@
         "name": "sr_support_zone",
         "price": 1336.05,
         "type": "SUPPORT_ZONE",
-        "distance_pct": -1.852681686954094,
-        "strength": 4.903755098711057,
+        "distance_pct": -2.0871655441800474,
+        "strength": 4.889866209822168,
         "touches": 1,
         "zone_low": 1335.51558,
         "zone_high": 1336.58442,
@@ -2660,33 +3091,33 @@
       },
       {
         "name": "vwap_session",
-        "price": 1355.2292429335516,
+        "price": 1355.5390647221568,
         "type": "LIQUIDITY_BELOW",
-        "distance_pct": -0.44375892118744265
+        "distance_pct": -0.6589034523127535
       },
       {
         "name": "vwap_weekly",
-        "price": 1195.003070762199,
+        "price": 1195.1447542071394,
         "type": "LIQUIDITY_BELOW",
-        "distance_pct": -12.214103685367405
+        "distance_pct": -12.413449744077488
       },
       {
         "name": "largest_bid_wall",
-        "price": 1358.84,
+        "price": 1364.01,
         "type": "ORDERBOOK_BID_LIQUIDITY",
-        "distance_pct": -0.17850977396108858
+        "distance_pct": -0.03810835965497583
       },
       {
         "name": "largest_ask_wall",
-        "price": 1360.07,
+        "price": 1365,
         "type": "ORDERBOOK_ASK_LIQUIDITY",
-        "distance_pct": -0.0881529747955967
+        "distance_pct": 0.03444409430353179
       }
     ],
     "data_context": {
-      "last_price": 1361.27,
-      "spread_bps": 0.073549151058857,
-      "realized_volatility_bps": 145.48748819866987
+      "last_price": 1364.53,
+      "spread_bps": 0.07328503849289983,
+      "realized_volatility_bps": 141.5392315391315
     },
     "raw_candidate_decision": "NO_TRADE",
     "effective_candidate_decision": "NO_TRADE",
